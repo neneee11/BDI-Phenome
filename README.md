@@ -1,6 +1,6 @@
-# BDI Hackathon 20226 Sampled Dataset
+# BDI Hackathon 2026 Sampled Dataset
 
-ชุดข้อมูลตัวอย่างสำหรับแการข่งขัน BDI Hackathon แบ่งเป็น 8 Dataset 3 Track
+ชุดข้อมูลตัวอย่างสำหรับการแข่งขัน BDI Hackathon แบ่งเป็น 8 Dataset 3 Track
 
 ## Data Overview
 
