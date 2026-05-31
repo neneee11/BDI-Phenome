@@ -1,0 +1,12 @@
+{
+  "primary_train_selected_top6": "modeling_outputs/train_scaled_selected_top6.csv",
+  "primary_test_selected_top6": "modeling_outputs/test_scaled_selected_top6.csv",
+  "selected_features": [
+    "Dimethyl sulfone",
+    "L-valine",
+    "isopropanol",
+    "lipoproteins",
+    "glycine",
+    "L-leucine"
+  ]
+}

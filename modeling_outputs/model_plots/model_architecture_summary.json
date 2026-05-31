@@ -1,0 +1,37 @@
+{
+  "architecture_plot": "modeling_outputs/model_plots/model_architecture_pipeline.png",
+  "model": "ExtraTreesClassifier / ExtraTreesEntr equivalent",
+  "features": [
+    "Dimethyl sulfone",
+    "L-valine",
+    "isopropanol",
+    "lipoproteins",
+    "glycine",
+    "L-leucine"
+  ],
+  "train_samples": 373,
+  "test_samples": 92,
+  "params": {
+    "n_estimators": 50,
+    "max_depth": null,
+    "min_samples_leaf": 1,
+    "criterion": "entropy"
+  },
+  "metrics": {
+    "test_roc_auc": 0.9535714285714286,
+    "test_accuracy": 0.9021739130434784,
+    "test_f1": 0.9361702127659576,
+    "auc_gap_train_minus_test": 0.0464285714285713
+  },
+  "confusion_matrix": {
+    "pred_preop": {
+      "actual_preop": 17,
+      "actual_postop": 4
+    },
+    "pred_postop": {
+      "actual_preop": 5,
+      "actual_postop": 66
+    }
+  },
+  "interpretation": "Metabolic-state classifier for preop vs post-op, not disease diagnosis."
+}

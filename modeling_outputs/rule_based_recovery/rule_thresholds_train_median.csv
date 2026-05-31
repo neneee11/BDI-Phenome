@@ -1,0 +1,7 @@
+metabolite,direction_for_postop_like,train_median_threshold_scaled,rule,postop_signal
+L-valine,low,-0.0678236438843877,value < train median,BCAA lower than train median
+L-leucine,low,0.072504703786193,value < train median,BCAA lower than train median
+lipoproteins,low,-0.1057041032581807,value < train median,lipid signal lower than train median
+isopropanol,low,-0.0813545655267935,value < train median,metabolic stress marker lower than train median
+Dimethyl sulfone,high,-0.0520538064640393,value > train median,post-op signal higher than train median
+glycine,high,0.0463162875440355,value > train median,metabolic health signal higher than train median

@@ -1,0 +1,37 @@
+{
+  "primary_strategy": "keep_all",
+  "sensitivity_strategy": "drop_train_outliers_z_gt3",
+  "outlier_rule": "abs(profile_z) > 3",
+  "counts": [
+    {
+      "split": "train",
+      "n_samples": 373,
+      "n_outliers_z_gt3": 3,
+      "outlier_pct": 0.8042895442359249,
+      "n_subjects": 85,
+      "n_outlier_subjects": 3,
+      "preop_outliers": 3,
+      "postop_outliers": 0
+    },
+    {
+      "split": "test",
+      "n_samples": 92,
+      "n_outliers_z_gt3": 2,
+      "outlier_pct": 2.1739130434782608,
+      "n_subjects": 22,
+      "n_outlier_subjects": 2,
+      "preop_outliers": 2,
+      "postop_outliers": 0
+    },
+    {
+      "split": "all",
+      "n_samples": 465,
+      "n_outliers_z_gt3": 5,
+      "outlier_pct": 1.0752688172043012,
+      "n_subjects": 107,
+      "n_outlier_subjects": 5,
+      "preop_outliers": 5,
+      "postop_outliers": 0
+    }
+  ]
+}

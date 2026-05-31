@@ -1,0 +1,93 @@
+Sample Name,subject_id,time_point,label_name,label_preop_postop,predicted_label,predicted_label_name,post_op_probability,correct_prediction
+0_0001_S,1,preop,preop,0,1,post-op,0.54,False
+0_0008_S,8,preop,preop,0,1,post-op,0.68,False
+0_0027_S,27,preop,preop,0,1,post-op,0.8,False
+0_0029_S,29,preop,preop,0,0,preop,0.18,True
+0_0030_S,30,preop,preop,0,0,preop,0.0,True
+0_0046_S,46,preop,preop,0,0,preop,0.3,True
+0_0092_S,92,preop,preop,0,0,preop,0.06,True
+0_0110_S,110,preop,preop,0,0,preop,0.42,True
+0_0134_S,134,preop,preop,0,0,preop,0.16,True
+0_0144_S,144,preop,preop,0,0,preop,0.0,True
+0_0154_S,154,preop,preop,0,0,preop,0.18,True
+0_0211_S,211,preop,preop,0,0,preop,0.36,True
+0_0262_S,262,preop,preop,0,0,preop,0.1,True
+0_0268_S,268,preop,preop,0,0,preop,0.02,True
+0_0283_S,283,preop,preop,0,0,preop,0.48,True
+0_0306_S,306,preop,preop,0,0,preop,0.32,True
+0_0309_S,309,preop,preop,0,0,preop,0.18,True
+0_0311_S,311,preop,preop,0,1,post-op,0.72,False
+0_0322_S,322,preop,preop,0,0,preop,0.06,True
+0_0412_S,412,preop,preop,0,0,preop,0.44,True
+0_0468_S,468,preop,preop,0,1,post-op,0.88,False
+0-0693-S,693,preop,preop,0,0,preop,0.38,True
+1_0001_S,1,3 months after surgery,post-op,1,1,post-op,1.0,True
+1_0008_S,8,3 months after surgery,post-op,1,1,post-op,1.0,True
+1_0030_S,30,3 months after surgery,post-op,1,1,post-op,0.78,True
+1_0046_S,46,3 months after surgery,post-op,1,1,post-op,0.92,True
+1_0092_S,92,3 months after surgery,post-op,1,1,post-op,0.98,True
+1_0134_S,134,3 months after surgery,post-op,1,1,post-op,0.98,True
+1_0144_S,144,3 months after surgery,post-op,1,1,post-op,0.78,True
+1_0154_S,154,3 months after surgery,post-op,1,1,post-op,0.88,True
+1_0211_S,211,3 months after surgery,post-op,1,1,post-op,0.92,True
+1_0268_S,268,3 months after surgery,post-op,1,1,post-op,0.92,True
+1_0283_S,283,3 months after surgery,post-op,1,0,preop,0.34,False
+1_0306_S,306,3 months after surgery,post-op,1,1,post-op,1.0,True
+1_0309_S,309,3 months after surgery,post-op,1,1,post-op,0.98,True
+1_0322_S,322,3 months after surgery,post-op,1,1,post-op,0.94,True
+1_0412_S,412,3 months after surgery,post-op,1,1,post-op,0.96,True
+1_0468_S,468,3 months after surgery,post-op,1,1,post-op,0.96,True
+1-0693-S,693,3 months after surgery,post-op,1,1,post-op,0.98,True
+2_0001_S,1,6 months after surgery,post-op,1,1,post-op,0.9,True
+2_0008_S,8,6 months after surgery,post-op,1,1,post-op,0.92,True
+2_0027_S,27,6 months after surgery,post-op,1,1,post-op,0.76,True
+2_0029_S,29,6 months after surgery,post-op,1,1,post-op,0.76,True
+2_0030_S,30,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0046_S,46,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0092_S,92,6 months after surgery,post-op,1,0,preop,0.36,False
+2_0134_S,134,6 months after surgery,post-op,1,1,post-op,0.9,True
+2_0144_S,144,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0154_S,154,6 months after surgery,post-op,1,1,post-op,0.98,True
+2_0211_S,211,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0262_S,262,6 months after surgery,post-op,1,1,post-op,0.52,True
+2_0268_S,268,6 months after surgery,post-op,1,0,preop,0.46,False
+2_0283_S,283,6 months after surgery,post-op,1,1,post-op,0.64,True
+2_0306_S,306,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0309_S,309,6 months after surgery,post-op,1,1,post-op,0.98,True
+2_0311-S,311,6 months after surgery,post-op,1,1,post-op,0.9,True
+2-0322-S,322,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0412_S,412,6 months after surgery,post-op,1,1,post-op,1.0,True
+2_0468_S,468,6 months after surgery,post-op,1,1,post-op,0.9,True
+3_0001_S,1,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0008_S,8,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0027_S,27,9 months after surgery,post-op,1,1,post-op,0.98,True
+3_0029_S,29,9 months after surgery,post-op,1,1,post-op,0.68,True
+3_0030_S,30,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0046_S,46,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0092_S,92,9 months after surgery,post-op,1,1,post-op,0.8,True
+3_0134_S,134,9 months after surgery,post-op,1,1,post-op,0.94,True
+3_0144_S,144,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0211-S,211,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0262_S,262,9 months after surgery,post-op,1,1,post-op,0.72,True
+3_0268_S,268,9 months after surgery,post-op,1,1,post-op,0.7,True
+3_0283_S,283,9 months after surgery,post-op,1,1,post-op,0.92,True
+3_0306_S,306,9 months after surgery,post-op,1,1,post-op,0.96,True
+3_0309_S,309,9 months after surgery,post-op,1,1,post-op,0.98,True
+3_0311_S,311,9 months after surgery,post-op,1,1,post-op,0.82,True
+3-0322-S,322,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0412_S,412,9 months after surgery,post-op,1,1,post-op,1.0,True
+3_0468_S,468,9 months after surgery,post-op,1,1,post-op,1.0,True
+4_0008_S,8,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0027_S,27,12 months after surgery,post-op,1,1,post-op,0.92,True
+4_0029_S,29,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0046-S,46,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0144_S,144,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0262_S,262,12 months after surgery,post-op,1,1,post-op,0.58,True
+4_0268_S,268,12 months after surgery,post-op,1,1,post-op,0.8,True
+4_0283_S,283,12 months after surgery,post-op,1,0,preop,0.3,False
+4_0306_S,306,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0309_S,309,12 months after surgery,post-op,1,1,post-op,1.0,True
+4_0311_S,311,12 months after surgery,post-op,1,1,post-op,0.98,True
+4_0322_S,322,12 months after surgery,post-op,1,1,post-op,0.96,True
+4_0412_S,412,12 months after surgery,post-op,1,1,post-op,0.96,True
+4_0468_S,468,12 months after surgery,post-op,1,1,post-op,1.0,True

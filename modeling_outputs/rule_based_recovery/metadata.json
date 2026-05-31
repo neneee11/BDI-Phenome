@@ -1,0 +1,42 @@
+{
+  "purpose": "Interpretable rule-based recovery score calibrated with train medians.",
+  "threshold_source": "train_scaled_selected_top6.csv medians only",
+  "score_range": "0-6",
+  "state_mapping": {
+    "0-2": "preop-like",
+    "3": "transition",
+    "4-6": "post-op-like"
+  },
+  "rule_config": {
+    "L-valine": {
+      "direction": "low",
+      "postop_signal": "BCAA lower than train median"
+    },
+    "L-leucine": {
+      "direction": "low",
+      "postop_signal": "BCAA lower than train median"
+    },
+    "lipoproteins": {
+      "direction": "low",
+      "postop_signal": "lipid signal lower than train median"
+    },
+    "isopropanol": {
+      "direction": "low",
+      "postop_signal": "metabolic stress marker lower than train median"
+    },
+    "Dimethyl sulfone": {
+      "direction": "high",
+      "postop_signal": "post-op signal higher than train median"
+    },
+    "glycine": {
+      "direction": "high",
+      "postop_signal": "metabolic health signal higher than train median"
+    }
+  },
+  "output_files": {
+    "thresholds": "modeling_outputs/rule_based_recovery/rule_thresholds_train_median.csv",
+    "train_scores": "modeling_outputs/rule_based_recovery/train_rule_based_recovery_scores.csv",
+    "test_scores": "modeling_outputs/rule_based_recovery/test_rule_based_recovery_scores.csv",
+    "summary": "modeling_outputs/rule_based_recovery/rule_based_recovery_summary.csv"
+  }
+}

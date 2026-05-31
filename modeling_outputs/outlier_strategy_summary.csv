@@ -1,0 +1,4 @@
+split,n_samples,n_outliers_z_gt3,outlier_pct,n_subjects,n_outlier_subjects,preop_outliers,postop_outliers
+train,373,3,0.8042895442359249,85,3,3,0
+test,92,2,2.1739130434782608,22,2,2,0
+all,465,5,1.0752688172043012,107,5,5,0

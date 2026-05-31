@@ -1,0 +1,25 @@
+{
+  "split_method": "GroupShuffleSplit",
+  "group_column": "subject_id",
+  "test_size": 0.2,
+  "random_state": 42,
+  "train_output": "modeling_outputs/train_group_split.csv",
+  "test_output": "modeling_outputs/test_group_split.csv",
+  "summary": [
+    {
+      "split": "train",
+      "n_samples": 373,
+      "n_subjects": 85,
+      "preop": 84,
+      "postop": 289
+    },
+    {
+      "split": "test",
+      "n_samples": 92,
+      "n_subjects": 22,
+      "preop": 22,
+      "postop": 70
+    }
+  ],
+  "subject_overlap": 0
+}

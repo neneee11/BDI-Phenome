@@ -1,0 +1,85 @@
+comparison,target_time,metabolite,n_pairs,wilcoxon_stat,p_value,median_log1p_delta,median_raw_delta,test_method,q_value_fdr
+12 months after surgery vs preop,12 months after surgery,Dimethyl sulfone,71,91.0,1.0575053730348354e-11,1.0894885516307675,55.85851045999999,wilcoxon_fallback_normal_approx,2.2207612833731542e-10
+12 months after surgery vs preop,12 months after surgery,isopropanol,71,143.0,8.005414936938254e-11,-1.2085155542845598,-61.939361119999994,wilcoxon_fallback_normal_approx,8.405685683785167e-10
+12 months after surgery vs preop,12 months after surgery,L-valine,71,161.0,1.5808453614357557e-10,-0.3516809655442019,-104.78976529999997,wilcoxon_fallback_normal_approx,1.106591753005029e-09
+12 months after surgery vs preop,12 months after surgery,lipoproteins,71,177.0,2.869232749785682e-10,-0.19406532808077337,-5478.014650000001,wilcoxon_fallback_normal_approx,1.506347193637483e-09
+12 months after surgery vs preop,12 months after surgery,glycine,71,242.0,2.970051170708185e-09,0.22990808290608733,70.00020269999999,wilcoxon_fallback_normal_approx,1.2474214916974377e-08
+12 months after surgery vs preop,12 months after surgery,L-tyrosine,71,280.0,1.093746846139663e-08,-0.18628480751586096,-22.086175049999994,wilcoxon_fallback_normal_approx,3.6297765408901615e-08
+12 months after surgery vs preop,12 months after surgery,L-allo-Isoleucine,71,283.0,1.2099255136300537e-08,-0.22698826323249932,-11.5020818,wilcoxon_fallback_normal_approx,3.6297765408901615e-08
+12 months after surgery vs preop,12 months after surgery,Pyruvic acid,71,380.0,2.710665094863057e-07,-0.41367188897135776,-35.50543960000002,wilcoxon_fallback_normal_approx,7.115495874015525e-07
+12 months after surgery vs preop,12 months after surgery,D-phenylalanine,71,411.0,6.873550237684988e-07,-0.13224856399288853,-20.96213420000001,wilcoxon_fallback_normal_approx,1.6038283887931638e-06
+12 months after surgery vs preop,12 months after surgery,methanol,71,444.0,1.7897805905448354e-06,-0.4202803759089502,-82.51415979999999,wilcoxon_fallback_normal_approx,3.758539240144154e-06
+12 months after surgery vs preop,12 months after surgery,L-leucine,71,579.0,6.273225195240413e-05,-0.16016765022343904,-66.2577584,wilcoxon_fallback_normal_approx,0.00011976157190913516
+12 months after surgery vs preop,12 months after surgery,L-glutamine,71,683.0,0.0006582869655663223,0.06433612233468544,61.23981470000001,wilcoxon_fallback_normal_approx,0.001152002189741064
+12 months after surgery vs preop,12 months after surgery,hypoxanthine,71,770.0,0.005740798695466913,0.2223588333170412,1.019796189,wilcoxon_fallback_normal_approx,0.009273597892677322
+12 months after surgery vs preop,12 months after surgery,histidine,71,802.0,0.006439172639124187,0.08377354489782185,5.172882340000001,wilcoxon_fallback_normal_approx,0.009658758958686281
+12 months after surgery vs preop,12 months after surgery,acetoacetate,71,843.0,0.012788201706070338,-0.20151992801327934,-9.384440451,wilcoxon_fallback_normal_approx,0.017903482388498475
+12 months after surgery vs preop,12 months after surgery,L-alanine,71,893.0,0.02758615941342155,-0.08908077783529222,-96.84580899999992,wilcoxon_fallback_normal_approx,0.03620683423011578
+12 months after surgery vs preop,12 months after surgery,creatinine,71,926.0,0.04400561776379596,-0.05968790787601641,-5.200617510000001,wilcoxon_fallback_normal_approx,0.05435988076704207
+12 months after surgery vs preop,12 months after surgery,acetate,71,938.0,0.05174137600746141,0.10192685714905769,3.984341360000002,wilcoxon_fallback_normal_approx,0.060364938675371654
+12 months after surgery vs preop,12 months after surgery,citrate,71,1142.0,0.43751712038082885,0.07745259477562971,9.966038400000002,wilcoxon_fallback_normal_approx,0.4835715541051266
+12 months after surgery vs preop,12 months after surgery,L-Lactic acid,71,1149.0,0.4615579388660179,0.0830174628892566,115.74939499999982,wilcoxon_fallback_normal_approx,0.48463583580931885
+12 months after surgery vs preop,12 months after surgery,(R)-3-Hydroxybutyric acid,71,704.0,0.7435254817712513,0.0,0.0,wilcoxon_fallback_normal_approx,0.7435254817712513
+3 months after surgery vs preop,3 months after surgery,lipoproteins,98,114.0,2.629542186343866e-16,-0.3085561663410621,-8567.250585000002,wilcoxon_fallback_normal_approx,5.5220385913221186e-15
+3 months after surgery vs preop,3 months after surgery,L-valine,98,176.0,1.593116429296893e-15,-0.3912189044283183,-110.09465690000002,wilcoxon_fallback_normal_approx,1.6727722507617378e-14
+3 months after surgery vs preop,3 months after surgery,Dimethyl sulfone,98,255.0,1.4763950551984094e-14,0.745602201332288,32.892887735,wilcoxon_fallback_normal_approx,1.0334765386388865e-13
+3 months after surgery vs preop,3 months after surgery,L-tyrosine,98,280.0,2.939132564034104e-14,-0.3481005672882813,-36.864929804999996,wilcoxon_fallback_normal_approx,1.5430445961179048e-13
+3 months after surgery vs preop,3 months after surgery,L-leucine,98,394.0,6.15495693792414e-13,-0.4721670645054692,-150.19282644999998,wilcoxon_fallback_normal_approx,2.5850819139281387e-12
+3 months after surgery vs preop,3 months after surgery,(R)-3-Hydroxybutyric acid,98,428.0,1.0262938853385344e-11,2.0411697788701217,26.0198399,wilcoxon_fallback_normal_approx,3.1358690341795555e-11
+3 months after surgery vs preop,3 months after surgery,L-allo-Isoleucine,98,506.0,1.045289678059852e-11,-0.24556536867144496,-11.846740684999997,wilcoxon_fallback_normal_approx,3.1358690341795555e-11
+3 months after surgery vs preop,3 months after surgery,glycine,98,561.0,3.969073404192198e-11,0.2727786979611033,86.86099970000001,wilcoxon_fallback_normal_approx,1.0418817686004521e-10
+3 months after surgery vs preop,3 months after surgery,D-phenylalanine,98,570.0,4.920048738406677e-11,-0.16781717311248956,-26.84398639999999,wilcoxon_fallback_normal_approx,1.1480113722948914e-10
+3 months after surgery vs preop,3 months after surgery,acetoacetate,98,643.0,2.707662408949757e-10,0.9425683814245756,59.185851125,wilcoxon_fallback_normal_approx,5.686091058794489e-10
+3 months after surgery vs preop,3 months after surgery,citrate,98,678.0,5.992460337479844e-10,0.27113175366740316,36.002313055,wilcoxon_fallback_normal_approx,1.144015155337061e-09
+3 months after surgery vs preop,3 months after surgery,isopropanol,98,958.0,2.0098154789506844e-07,-0.7534772640476868,-45.65984896,wilcoxon_fallback_normal_approx,3.5171770881636975e-07
+3 months after surgery vs preop,3 months after surgery,L-alanine,98,1474.0,0.0007518408453156922,-0.08386663617125034,-95.13221264999999,wilcoxon_fallback_normal_approx,0.0012145121347407334
+3 months after surgery vs preop,3 months after surgery,L-Lactic acid,98,1613.0,0.0040098665487805565,0.1525309552514722,295.087635,wilcoxon_fallback_normal_approx,0.006014799823170834
+3 months after surgery vs preop,3 months after surgery,methanol,98,1620.0,0.004336596701564269,-0.18699534091176995,-34.80386644999999,wilcoxon_fallback_normal_approx,0.006071235382189977
+3 months after surgery vs preop,3 months after surgery,L-glutamine,98,1640.0,0.005407367853931895,0.05197371545087437,51.06016319999998,wilcoxon_fallback_normal_approx,0.007097170308285613
+3 months after surgery vs preop,3 months after surgery,acetate,98,1728.0,0.013516096699429292,0.1460083332137152,7.025296185000002,wilcoxon_fallback_normal_approx,0.016696354746353833
+3 months after surgery vs preop,3 months after surgery,Pyruvic acid,98,1810.0,0.029309400575977966,-0.09501562046476764,-8.726676519999991,wilcoxon_fallback_normal_approx,0.03419430067197429
+3 months after surgery vs preop,3 months after surgery,histidine,98,1960.0,0.09940125298346225,-0.036729420052791006,-2.2153341299999987,wilcoxon_fallback_normal_approx,0.1098645427711951
+3 months after surgery vs preop,3 months after surgery,hypoxanthine,98,2050.0,0.18390031016711275,0.0777157802547952,0.4784003149999998,wilcoxon_fallback_normal_approx,0.1930953256754684
+3 months after surgery vs preop,3 months after surgery,creatinine,98,2081.0,0.22284780442966637,-0.013828837002321404,-1.5663630000000026,wilcoxon_fallback_normal_approx,0.22284780442966637
+6 months after surgery vs preop,6 months after surgery,lipoproteins,97,88.0,1.829492195020839e-16,-0.25370879353690334,-7162.53095,wilcoxon_fallback_normal_approx,3.841933609543762e-15
+6 months after surgery vs preop,6 months after surgery,glycine,97,244.0,1.70082642081456e-14,0.23940426090143063,84.26789489999999,wilcoxon_fallback_normal_approx,1.785867741855288e-13
+6 months after surgery vs preop,6 months after surgery,Dimethyl sulfone,97,292.0,6.444412761424378e-14,0.9897290676557109,48.02937645,wilcoxon_fallback_normal_approx,4.5110889329970643e-13
+6 months after surgery vs preop,6 months after surgery,L-valine,97,356.0,3.6368198627757403e-13,-0.26165496018550627,-79.06262410000005,wilcoxon_fallback_normal_approx,1.9093304279572637e-12
+6 months after surgery vs preop,6 months after surgery,L-tyrosine,97,501.0,1.512571441625512e-11,-0.2427358211029098,-27.554499599999986,wilcoxon_fallback_normal_approx,6.352800054827151e-11
+6 months after surgery vs preop,6 months after surgery,D-phenylalanine,97,686.0,1.194237001961883e-09,-0.18559598454304904,-25.608182099999993,wilcoxon_fallback_normal_approx,4.179829506866591e-09
+6 months after surgery vs preop,6 months after surgery,L-allo-Isoleucine,97,695.0,1.4608140078604727e-09,-0.2048393191899085,-9.316809819999996,wilcoxon_fallback_normal_approx,4.382442023581418e-09
+6 months after surgery vs preop,6 months after surgery,L-leucine,97,767.0,7.057163188062437e-09,-0.2863322256158307,-89.42777539999997,wilcoxon_fallback_normal_approx,1.8525053368663896e-08
+6 months after surgery vs preop,6 months after surgery,isopropanol,97,802.0,1.4821208060263783e-08,-1.0325642731347555,-57.296063090000004,wilcoxon_fallback_normal_approx,3.458281880728216e-08
+6 months after surgery vs preop,6 months after surgery,methanol,97,1079.0,3.0576380925443363e-06,-0.33693608458444846,-58.464648499999996,wilcoxon_fallback_normal_approx,6.421039994343106e-06
+6 months after surgery vs preop,6 months after surgery,Pyruvic acid,97,1104.0,4.7179577192870095e-06,-0.2787532322819679,-27.736999759999996,wilcoxon_fallback_normal_approx,9.00701019136611e-06
+6 months after surgery vs preop,6 months after surgery,(R)-3-Hydroxybutyric acid,97,790.0,0.00011415910675089456,0.3694447090118125,3.756109147,wilcoxon_fallback_normal_approx,0.00019977843681406548
+6 months after surgery vs preop,6 months after surgery,acetoacetate,97,1399.0,0.00043896862094863114,0.2755035039917493,19.586076509999998,wilcoxon_fallback_normal_approx,0.0007091031569170195
+6 months after surgery vs preop,6 months after surgery,L-alanine,97,1440.0,0.0007573013068797096,-0.08761480712187186,-103.7909380000001,wilcoxon_fallback_normal_approx,0.0011359519603195644
+6 months after surgery vs preop,6 months after surgery,histidine,97,1525.0,0.0021979207906494356,-0.061583543884617065,-3.886424550000001,wilcoxon_fallback_normal_approx,0.0030770891069092096
+6 months after surgery vs preop,6 months after surgery,hypoxanthine,97,1552.0,0.003027371805470566,0.19421661459082573,1.1598455130000005,wilcoxon_fallback_normal_approx,0.003973425494680118
+6 months after surgery vs preop,6 months after surgery,acetate,97,1743.0,0.022745521392079044,0.18139365223073645,6.65921625,wilcoxon_fallback_normal_approx,0.028097408778450586
+6 months after surgery vs preop,6 months after surgery,L-glutamine,97,1860.0,0.06335544541361351,0.06529381496649656,61.88294700000006,wilcoxon_fallback_normal_approx,0.07391468631588244
+6 months after surgery vs preop,6 months after surgery,citrate,97,1871.0,0.06920054736694146,0.07954574969780381,9.033082399999998,wilcoxon_fallback_normal_approx,0.07648481551083004
+6 months after surgery vs preop,6 months after surgery,L-Lactic acid,97,2032.0,0.2157930038979626,0.11482422431140638,154.131977,wilcoxon_fallback_normal_approx,0.22658265409286074
+6 months after surgery vs preop,6 months after surgery,creatinine,97,2231.0,0.6018486274957411,0.02479542572757154,2.8761565700000062,wilcoxon_fallback_normal_approx,0.6018486274957411
+9 months after surgery vs preop,9 months after surgery,Dimethyl sulfone,92,113.0,3.093224593996826e-15,1.1307805250800036,62.91153188,wilcoxon_fallback_normal_approx,3.2478858236966673e-14
+9 months after surgery vs preop,9 months after surgery,lipoproteins,92,113.0,3.093224593996826e-15,-0.2603965411506515,-7633.1242349999975,wilcoxon_fallback_normal_approx,3.2478858236966673e-14
+9 months after surgery vs preop,9 months after surgery,L-valine,92,240.0,1.4402640357435374e-13,-0.27420140803212734,-81.48107530000001,wilcoxon_fallback_normal_approx,1.0081848250204762e-12
+9 months after surgery vs preop,9 months after surgery,glycine,92,271.0,3.5459427047618735e-13,0.3085143905229857,99.007623,wilcoxon_fallback_normal_approx,1.8616199199999835e-12
+9 months after surgery vs preop,9 months after surgery,isopropanol,92,292.0,6.475369854437088e-13,-1.2139836818651701,-56.398999875,wilcoxon_fallback_normal_approx,2.7196553388635772e-12
+9 months after surgery vs preop,9 months after surgery,L-tyrosine,92,353.0,3.58737451641893e-12,-0.26893579014273516,-30.18792312,wilcoxon_fallback_normal_approx,1.2555810807466255e-11
+9 months after surgery vs preop,9 months after surgery,D-phenylalanine,92,422.0,2.327088102903983e-11,-0.20474605253230038,-24.9190593,wilcoxon_fallback_normal_approx,6.981264308711949e-11
+9 months after surgery vs preop,9 months after surgery,L-allo-Isoleucine,92,501.0,1.8147067513763596e-10,-0.18550368439772424,-9.414233194999994,wilcoxon_fallback_normal_approx,4.763605222362944e-10
+9 months after surgery vs preop,9 months after surgery,L-leucine,92,544.0,5.338478611489861e-10,-0.25070960441718615,-89.03777464999999,wilcoxon_fallback_normal_approx,1.2456450093476341e-09
+9 months after surgery vs preop,9 months after surgery,methanol,92,701.0,2.1749524193682163e-08,-0.4175304557351649,-74.203861,wilcoxon_fallback_normal_approx,4.5674000806732545e-08
+9 months after surgery vs preop,9 months after surgery,Pyruvic acid,92,844.0,4.639566732679756e-07,-0.39254104736357,-37.855197075,wilcoxon_fallback_normal_approx,8.857354671479533e-07
+9 months after surgery vs preop,9 months after surgery,L-glutamine,92,1339.0,0.0018508937006661117,0.048864805384996046,46.31736635000004,wilcoxon_fallback_normal_approx,0.0032390639761656955
+9 months after surgery vs preop,9 months after surgery,hypoxanthine,92,1760.0,0.14052475473094128,0.1547301745941254,0.9252917995000001,wilcoxon_fallback_normal_approx,0.227001526873059
+9 months after surgery vs preop,9 months after surgery,L-alanine,92,1828.0,0.22664180595136904,-0.028089642958069927,-32.41576800000007,wilcoxon_fallback_normal_approx,0.33996270892705355
+9 months after surgery vs preop,9 months after surgery,creatinine,92,1857.0,0.27302111042430416,-0.03424137938015859,-4.03900913999999,wilcoxon_fallback_normal_approx,0.36162207303796795
+9 months after surgery vs preop,9 months after surgery,(R)-3-Hydroxybutyric acid,92,1218.0,0.2755215794574994,0.0,0.0,wilcoxon_fallback_normal_approx,0.36162207303796795
+9 months after surgery vs preop,9 months after surgery,histidine,92,1948.0,0.45821626287224365,0.007083439818939663,0.5101810149999935,wilcoxon_fallback_normal_approx,0.566031854136301
+9 months after surgery vs preop,9 months after surgery,L-Lactic acid,92,1985.0,0.5500314066714262,0.056758009212479976,76.58736064999994,wilcoxon_fallback_normal_approx,0.6390487659390763
+9 months after surgery vs preop,9 months after surgery,acetoacetate,92,2000.0,0.5896766803443991,0.05716786157101028,2.1870278350000003,wilcoxon_fallback_normal_approx,0.6390487659390763
+9 months after surgery vs preop,9 months after surgery,acetate,92,2007.0,0.6086178723229299,0.02373730154991427,1.450899795000005,wilcoxon_fallback_normal_approx,0.6390487659390763
+9 months after surgery vs preop,9 months after surgery,citrate,92,2130.0,0.9735963438840692,-0.035949622510783374,-3.910262000000003,wilcoxon_fallback_normal_approx,0.9735963438840693
