@@ -63,6 +63,40 @@ filetype:
 - **Correlation Analysis**: ความสัมพันธ์ระหว่างสารเมตาบอไลต์กับข้อมูลกายภาพ (อายุ น้ำหนัก ฯลฯ)
 - **Feature Selection**: เลือกสารเมตาบอไลต์ที่สำคัญที่สุด
 
+## Data Pipeline ที่เพิ่ม
+
+ไฟล์ [`nmr_pipeline.py`](nmr_pipeline.py) เป็น pipeline สำหรับเตรียมข้อมูลและทำ baseline analysis แบบรันซ้ำได้:
+
+1. โหลด `Domain_2_NMR_results_MTBLS242.tsv` และ `Domain_2_sample_table_MTBLS242.tsv`
+2. แปลงตาราง NMR จากรูปแบบ metabolite x sample เป็น sample x metabolite
+3. รวม abundance features เข้ากับ sample metadata ด้วย `Sample Name`
+4. สร้างรายงาน QC และ feature dictionary
+5. ทำ differential analysis ระหว่าง `preop` กับ sample หลังผ่าตัดทั้งหมด
+6. สร้าง logistic regression baseline model สำหรับจำแนก `preop` vs `not_preop`
+
+รัน pipeline:
+
+```bash
+python3 nmr_pipeline.py
+```
+
+ผลลัพธ์จะถูกเขียนไว้ที่โฟลเดอร์ `outputs/`:
+
+| ไฟล์ | คำอธิบาย |
+|------|----------|
+| `nmr_sample_feature_matrix.csv` | ตารางหลักระดับ sample พร้อม metadata และ metabolite abundance 21 features |
+| `metabolite_feature_dictionary.csv` | mapping ระหว่าง `feature_id` กับชื่อสาร / CHEBI / metadata ของสาร |
+| `qc_feature_summary.csv` | missing rate, zero rate, mean, std, min, median, max ของแต่ละ feature |
+| `differential_preop_vs_postop.csv` | Welch t-test, Mann-Whitney U test และ FDR q-value สำหรับ `preop` vs `not_preop` |
+| `model_feature_coefficients.csv` | coefficient ของ logistic regression เรียงตามความสำคัญ |
+| `pipeline_summary.json` | summary ของ pipeline, target distribution, model metrics และ note สำคัญ |
+
+หมายเหตุจากข้อมูลจริง: ใน `Domain_2_sample_table_MTBLS242.tsv` ยังไม่พบคอลัมน์ diagnosis/control ที่มีค่าใช้งานได้ ดังนั้น pipeline นี้จึงใช้ `Factor Value[time point]` เป็น target ชั่วคราว โดยเปรียบเทียบ `preop` กับกลุ่มหลังผ่าตัดทั้งหมด หากมีไฟล์ clinical label เพิ่ม สามารถรันใหม่ด้วย target อื่นได้:
+
+```bash
+python3 nmr_pipeline.py --target-col "ชื่อคอลัมน์ target" --baseline-label "ชื่อกลุ่ม baseline"
+```
+
 ## หมายเหตุ
 - ข้อมูลเชื่อมโยงกับโครงการ MTBLS242
 - ข้อมูลผู้ป่วย: เบาหวาน + ความดันโลหิตสูง vs. กลุ่มควบคุม

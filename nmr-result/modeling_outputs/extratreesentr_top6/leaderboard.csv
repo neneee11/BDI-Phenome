@@ -1,0 +1,2 @@
+model,score_test,score_val,eval_metric,pred_time_test,pred_time_val,fit_time,pred_time_test_marginal,pred_time_val_marginal,fit_time_marginal,stack_level,can_infer,fit_order
+ExtraTreesEntr,0.9451298701298702,0.9259634888438134,roc_auc,0.14743924140930176,0.5161490440368652,2.01426100730896,0.14743924140930176,0.5161490440368652,2.01426100730896,1,True,1

@@ -1,0 +1,7 @@
+rank_in_starter_panel,metabolite,postop_pattern,metabolic_axis
+1,Dimethyl sulfone,increase,post-op metabolic change signal
+2,L-valine,decrease,BCAA / protein metabolism
+3,isopropanol,decrease,ketone/alcohol metabolism or metabolic stress
+4,lipoproteins,decrease,lipid metabolism / cardiometabolic risk
+5,glycine,increase,amino-acid metabolism / metabolic health direction
+6,L-leucine,decrease,BCAA / protein metabolism

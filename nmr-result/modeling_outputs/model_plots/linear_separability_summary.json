@@ -1,0 +1,26 @@
+{
+  "pca_explained_variance_ratio": [
+    0.3902384399706602,
+    0.2037608739771459
+  ],
+  "linear_model_pca": {
+    "train_roc_auc": 0.9641209424946449,
+    "test_roc_auc": 0.9461038961038961,
+    "train_accuracy": 0.8981233243967829,
+    "test_accuracy": 0.8478260869565217
+  },
+  "linear_model_top2": {
+    "features": [
+      "L-valine",
+      "Dimethyl sulfone"
+    ],
+    "train_roc_auc": 0.9303427253254243,
+    "test_roc_auc": 0.887012987012987,
+    "train_accuracy": 0.8605898123324397,
+    "test_accuracy": 0.75
+  },
+  "plot_files": {
+    "pca_linear_boundary": "modeling_outputs/model_plots/linear_separability_pca_train_test.png",
+    "top2_linear_boundary": "modeling_outputs/model_plots/linear_boundary_top2_metabolites.png"
+  }
+}
