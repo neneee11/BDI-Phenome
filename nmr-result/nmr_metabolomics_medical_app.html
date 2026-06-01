@@ -1,0 +1,695 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#0A0F1E;--bg2:#0F1629;--bg3:#151E35;--card:#1A2540;--card2:#1F2C4A;
+    --border:#2A3A5C;--border2:#3A4F7A;
+    --teal:#00C9B1;--teal2:#00A896;--tealg:rgba(0,201,177,0.12);
+    --blue:#4A9EFF;--blue2:#2D7DD2;--blueg:rgba(74,158,255,0.1);
+    --amber:#FFB347;--amberg:rgba(255,179,71,0.1);
+    --green:#4CAF50;--greeng:rgba(76,175,80,0.1);
+    --red:#FF5252;--redg:rgba(255,82,82,0.1);
+    --purple:#9C6FFF;--purpleg:rgba(156,111,255,0.1);
+    --text1:#E8EDF5;--text2:#94A3B8;--text3:#64748B;
+    --font:'Sarabun',sans-serif;--mono:'JetBrains Mono',monospace;
+    --r:10px;--r2:14px;
+  }
+  body{background:var(--bg);color:var(--text1);font-family:var(--font);font-size:14px;line-height:1.6;overflow-x:hidden}
+  .app{display:flex;height:100vh;min-height:600px}
+  /* Sidebar */
+  .sidebar{width:220px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;padding:16px 0}
+  .logo{padding:0 16px 16px;border-bottom:1px solid var(--border);margin-bottom:12px}
+  .logo-title{font-size:13px;font-weight:700;color:var(--teal);letter-spacing:.5px}
+  .logo-sub{font-size:10px;color:var(--text3);margin-top:2px}
+  .nav-section{padding:0 8px;margin-bottom:4px}
+  .nav-label{font-size:10px;color:var(--text3);padding:6px 8px;letter-spacing:1px;text-transform:uppercase}
+  .nav-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:var(--r);cursor:pointer;font-size:13px;color:var(--text2);transition:all .2s;margin-bottom:2px}
+  .nav-item:hover{background:var(--tealg);color:var(--teal)}
+  .nav-item.active{background:var(--tealg);color:var(--teal);font-weight:500}
+  .nav-item .ni{font-size:16px;width:18px;text-align:center}
+  .sidebar-footer{margin-top:auto;padding:12px 16px;border-top:1px solid var(--border)}
+  .user-chip{display:flex;align-items:center;gap:8px}
+  .avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--blue));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0}
+  .user-info{min-width:0}
+  .user-name{font-size:12px;font-weight:500;color:var(--text1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .user-role{font-size:10px;color:var(--text3)}
+  /* Main */
+  .main{flex:1;overflow:hidden;display:flex;flex-direction:column}
+  .topbar{height:52px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 20px;gap:12px;flex-shrink:0}
+  .topbar-title{font-size:15px;font-weight:600;color:var(--text1);flex:1}
+  .status-badge{display:flex;align-items:center;gap:5px;padding:4px 10px;background:var(--greeng);border:1px solid var(--green);border-radius:20px;font-size:11px;color:var(--green)}
+  .status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .content{flex:1;overflow-y:auto;padding:16px}
+  /* Views */
+  .view{display:none}
+  .view.active{display:block}
+  /* Cards */
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:16px}
+  .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .card-title{font-size:13px;font-weight:600;color:var(--text1)}
+  .card-badge{font-size:10px;padding:2px 8px;border-radius:10px;font-weight:500}
+  .badge-teal{background:var(--tealg);color:var(--teal);border:1px solid rgba(0,201,177,.3)}
+  .badge-amber{background:var(--amberg);color:var(--amber);border:1px solid rgba(255,179,71,.3)}
+  .badge-green{background:var(--greeng);color:var(--green);border:1px solid rgba(76,175,80,.3)}
+  .badge-blue{background:var(--blueg);color:var(--blue);border:1px solid rgba(74,158,255,.3)}
+  .badge-red{background:var(--redg);color:var(--red);border:1px solid rgba(255,82,82,.3)}
+  /* Grid */
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+  .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
+  .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px}
+  /* Metric */
+  .metric{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;position:relative;overflow:hidden}
+  .metric::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+  .metric.teal::before{background:var(--teal)}
+  .metric.blue::before{background:var(--blue)}
+  .metric.amber::before{background:var(--amber)}
+  .metric.green::before{background:var(--green)}
+  .metric-label{font-size:11px;color:var(--text3);margin-bottom:4px}
+  .metric-val{font-size:22px;font-weight:700;font-family:var(--mono)}
+  .metric-val.teal{color:var(--teal)}
+  .metric-val.blue{color:var(--blue)}
+  .metric-val.amber{color:var(--amber)}
+  .metric-val.green{color:var(--green)}
+  .metric-sub{font-size:10px;color:var(--text3);margin-top:2px}
+  /* Progress bar */
+  .prog-wrap{margin-top:6px}
+  .prog-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+  .prog-fill{height:100%;border-radius:2px;transition:width 1s}
+  /* Patient table */
+  .pt-table{width:100%;border-collapse:collapse;font-size:12px}
+  .pt-table th{padding:8px 10px;text-align:left;font-weight:500;color:var(--text3);border-bottom:1px solid var(--border);font-size:11px;letter-spacing:.5px;text-transform:uppercase}
+  .pt-table td{padding:9px 10px;border-bottom:1px solid rgba(42,58,92,.5);color:var(--text2);cursor:pointer;transition:background .15s}
+  .pt-table tr:hover td{background:rgba(0,201,177,.05)}
+  .pt-row-selected td{background:var(--tealg)!important}
+  .pred-chip{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:500}
+  /* Prob bar */
+  .prob-bar{width:60px;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden;display:inline-block;vertical-align:middle;margin-left:4px}
+  .prob-fill{height:100%;border-radius:3px}
+  /* Metabolite chart */
+  .met-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .met-name{font-size:12px;color:var(--text2);width:120px;flex-shrink:0}
+  .met-bar-wrap{flex:1;height:8px;background:rgba(255,255,255,.06);border-radius:4px;overflow:hidden}
+  .met-bar{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--teal),var(--blue));transition:width 1.2s}
+  .met-val{font-size:11px;font-family:var(--mono);color:var(--text3);width:34px;text-align:right;flex-shrink:0}
+  /* Canvas area */
+  .chart-wrap{position:relative;width:100%;height:160px}
+  canvas{display:block}
+  /* PCA */
+  .pca-wrap{position:relative;width:100%;height:180px}
+  /* Patient detail panel */
+  .detail-panel{background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);padding:14px;margin-top:12px}
+  .dp-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+  .dp-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--teal2),var(--blue2));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+  .dp-name{font-size:14px;font-weight:600}
+  .dp-sub{font-size:11px;color:var(--text3)}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .info-item{background:var(--bg3);border-radius:8px;padding:8px 10px}
+  .info-label{font-size:10px;color:var(--text3);margin-bottom:3px}
+  .info-val{font-size:13px;font-weight:500}
+  /* Chat */
+  .chat-container{display:flex;flex-direction:column;height:calc(100vh - 80px)}
+  .chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px}
+  .msg{max-width:82%;display:flex;flex-direction:column;gap:4px}
+  .msg.user{align-self:flex-end;align-items:flex-end}
+  .msg.ai{align-self:flex-start;align-items:flex-start}
+  .msg-bubble{padding:10px 14px;border-radius:var(--r2);font-size:13px;line-height:1.6}
+  .msg.user .msg-bubble{background:linear-gradient(135deg,var(--teal2),var(--blue2));color:#fff;border-bottom-right-radius:4px}
+  .msg.ai .msg-bubble{background:var(--card2);border:1px solid var(--border);color:var(--text1);border-bottom-left-radius:4px}
+  .msg-time{font-size:10px;color:var(--text3)}
+  .ai-header{display:flex;align-items:center;gap:6px;margin-bottom:6px}
+  .ai-label{font-size:11px;color:var(--teal);font-weight:500}
+  .chat-input-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);margin:0 12px 12px;padding:10px}
+  .chat-input-row{display:flex;gap:8px;align-items:flex-end}
+  .chat-textarea{flex:1;background:transparent;border:none;outline:none;color:var(--text1);font-family:var(--font);font-size:13px;resize:none;line-height:1.5;min-height:40px;max-height:100px}
+  .chat-textarea::placeholder{color:var(--text3)}
+  .send-btn{width:36px;height:36px;border-radius:8px;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .2s}
+  .send-btn:hover{background:var(--teal2);transform:scale(1.05)}
+  .send-btn svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .quick-prompts{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .qp{font-size:11px;padding:4px 10px;border:1px solid var(--border2);border-radius:20px;color:var(--text2);cursor:pointer;transition:all .2s;background:transparent}
+  .qp:hover{background:var(--tealg);border-color:var(--teal);color:var(--teal)}
+  .typing-indicator{display:flex;align-items:center;gap:4px;padding:10px 14px;background:var(--card2);border:1px solid var(--border);border-radius:var(--r2);width:60px}
+  .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:typing .8s infinite}
+  .typing-dot:nth-child(2){animation-delay:.15s}
+  .typing-dot:nth-child(3){animation-delay:.3s}
+  @keyframes typing{0%,100%{opacity:.3;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
+  /* Modeling view */
+  .tab-row{display:flex;gap:6px;margin-bottom:14px}
+  .tab{font-size:12px;padding:6px 14px;border-radius:20px;cursor:pointer;border:1px solid var(--border);color:var(--text3);transition:all .2s;background:transparent}
+  .tab.active{background:var(--tealg);border-color:var(--teal);color:var(--teal);font-weight:500}
+  .conf-matrix{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:8px 0}
+  .cm-cell{background:var(--bg3);border-radius:6px;padding:10px;text-align:center}
+  .cm-val{font-size:18px;font-weight:700;font-family:var(--mono)}
+  .cm-label{font-size:10px;color:var(--text3);margin-top:2px}
+  /* SHAP */
+  .shap-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+  .shap-name{font-size:11px;color:var(--text2);width:100px;flex-shrink:0;text-align:right}
+  .shap-bar-wrap{flex:1;height:10px;background:rgba(255,255,255,.05);border-radius:5px;overflow:hidden;position:relative}
+  .shap-bar{height:100%;border-radius:5px;position:absolute;top:0}
+  .shap-val{font-size:10px;font-family:var(--mono);color:var(--text3);width:30px;flex-shrink:0}
+  /* Scrollbar */
+  ::-webkit-scrollbar{width:4px;height:4px}
+  ::-webkit-scrollbar-track{background:transparent}
+  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:4px}
+  .section-title{font-size:11px;font-weight:600;color:var(--text3);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+  .divider{height:1px;background:var(--border);margin:12px 0}
+  .alert-item{display:flex;align-items:flex-start;gap:8px;padding:8px 10px;background:var(--bg3);border-radius:8px;margin-bottom:6px;border-left:3px solid}
+  .alert-item.warn{border-color:var(--amber)}
+  .alert-item.info{border-color:var(--blue)}
+  .alert-txt{font-size:12px;color:var(--text2)}
+  .alert-time{font-size:10px;color:var(--text3);margin-top:2px}
+  .roc-wrap{position:relative;height:160px;margin-top:8px}
+  .btn{padding:6px 14px;border-radius:8px;font-size:12px;font-weight:500;cursor:pointer;border:1px solid;transition:all .2s;font-family:var(--font)}
+  .btn-teal{background:var(--tealg);border-color:var(--teal);color:var(--teal)}
+  .btn-teal:hover{background:var(--teal);color:#fff}
+  .select-input{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:5px 10px;color:var(--text1);font-size:12px;font-family:var(--font);outline:none;cursor:pointer}
+</style>
+
+<div class="app">
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <div style="width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,#00C9B1,#4A9EFF);display:flex;align-items:center;justify-content:center;font-size:13px">🧬</div>
+        <div>
+          <div class="logo-title">MetaboAI</div>
+          <div class="logo-sub">NMR Metabolomics</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">ภาพรวม</div>
+      <div class="nav-item active" onclick="showView('dashboard',this)">
+        <span class="ni"><i class="ti ti-layout-dashboard"></i></span>Dashboard
+      </div>
+      <div class="nav-item" onclick="showView('patients',this)">
+        <span class="ni"><i class="ti ti-users"></i></span>ผู้ป่วย
+      </div>
+      <div class="nav-item" onclick="showView('analysis',this)">
+        <span class="ni"><i class="ti ti-chart-scatter"></i></span>วิเคราะห์ข้อมูล
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">โมเดล AI</div>
+      <div class="nav-item" onclick="showView('modeling',this)">
+        <span class="ni"><i class="ti ti-brain"></i></span>Modeling
+      </div>
+      <div class="nav-item" onclick="showView('shap',this)">
+        <span class="ni"><i class="ti ti-chart-bar"></i></span>SHAP / Features
+      </div>
+    </div>
+    <div class="nav-section">
+      <div class="nav-label">AI Assistant</div>
+      <div class="nav-item" onclick="showView('chat',this)">
+        <span class="ni"><i class="ti ti-message-circle-2"></i></span>LLM Chat
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="user-chip">
+        <div class="avatar">นพ</div>
+        <div class="user-info">
+          <div class="user-name">นพ. อรรถพล วงษ์ศรี</div>
+          <div class="user-role">ศัลยแพทย์ผ่าตัด</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-title" id="view-title">Dashboard — ภาพรวมระบบ</div>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span>ExtraTrees v2.1 Active</span>
+      </div>
+      <select class="select-input" onchange="filterTime(this.value)">
+        <option value="all">ทุกช่วง</option>
+        <option value="3">3 เดือน</option>
+        <option value="6">6 เดือน</option>
+        <option value="12">12 เดือน</option>
+      </select>
+    </div>
+
+    <div class="content">
+      <!-- DASHBOARD VIEW -->
+      <div class="view active" id="view-dashboard">
+        <div class="grid-4">
+          <div class="metric teal">
+            <div class="metric-label">ROC-AUC</div>
+            <div class="metric-val teal">0.954</div>
+            <div class="metric-sub">Best Model Score</div>
+            <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:95.4%;background:var(--teal)"></div></div></div>
+          </div>
+          <div class="metric blue">
+            <div class="metric-label">Accuracy</div>
+            <div class="metric-val blue">0.902</div>
+            <div class="metric-sub">Test Set</div>
+            <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:90.2%;background:var(--blue)"></div></div></div>
+          </div>
+          <div class="metric amber">
+            <div class="metric-label">F1-Score</div>
+            <div class="metric-val amber">0.936</div>
+            <div class="metric-sub">Weighted Average</div>
+            <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:93.6%;background:var(--amber)"></div></div></div>
+          </div>
+          <div class="metric green">
+            <div class="metric-label">AUC Gap</div>
+            <div class="metric-val green">0.046</div>
+            <div class="metric-sub">Train vs Test</div>
+            <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" style="width:4.6%;background:var(--green)"></div></div></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-chart-line" style="color:var(--teal)"></i> ROC Curve</span>
+              <span class="card-badge badge-teal">AUC = 0.954</span>
+            </div>
+            <div class="roc-wrap"><canvas id="rocCanvas"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-users" style="color:var(--blue)"></i> Sample Distribution</span>
+              <span class="card-badge badge-blue">465 samples</span>
+            </div>
+            <div class="chart-wrap" style="height:140px"><canvas id="distCanvas"></canvas></div>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-flask" style="color:var(--amber)"></i> Top 6 Metabolites (SHAP)</span>
+            </div>
+            <div id="metabo-bars"></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-bell" style="color:var(--red)"></i> การแจ้งเตือน</span>
+              <span class="card-badge badge-amber">3 รายการ</span>
+            </div>
+            <div class="alert-item warn">
+              <i class="ti ti-alert-triangle" style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px"></i>
+              <div><div class="alert-txt">S_047: ค่า Dimethyl sulfone ลดลงผิดปกติ</div><div class="alert-time">วันนี้ 09:12 • ติดตามการฟื้นตัว</div></div>
+            </div>
+            <div class="alert-item warn">
+              <i class="ti ti-alert-triangle" style="color:var(--amber);font-size:16px;flex-shrink:0;margin-top:1px"></i>
+              <div><div class="alert-txt">S_089: Recovery score ต่ำกว่า 3/6</div><div class="alert-time">เมื่อวาน 15:40 • แนะนำปรึกษาโภชนากร</div></div>
+            </div>
+            <div class="alert-item info">
+              <i class="ti ti-info-circle" style="color:var(--blue);font-size:16px;flex-shrink:0;margin-top:1px"></i>
+              <div><div class="alert-txt">S_102: ความน่าจะเป็น post-op สูงถึง 0.87</div><div class="alert-time">เมื่อวาน 11:20 • ผลลัพธ์ดีตามคาด</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PATIENTS VIEW -->
+      <div class="view" id="view-patients">
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-header" style="margin-bottom:0">
+            <span class="card-title"><i class="ti ti-users" style="color:var(--blue)"></i> รายชื่อผู้ป่วย (465 samples)</span>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-teal" onclick="showView('chat',document.querySelector(\'[onclick*=chat]\'))">
+                <i class="ti ti-message-circle-2"></i> ถามAI
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:12px;overflow-x:auto">
+          <table class="pt-table">
+            <thead><tr>
+              <th>รหัสผู้ป่วย</th><th>เวลา (เดือน)</th><th>การทำนาย</th><th>ความน่าจะเป็น</th><th>Recovery Score</th><th>สถานะ</th>
+            </tr></thead>
+            <tbody id="patient-tbody"></tbody>
+          </table>
+        </div>
+        <div id="patient-detail" style="display:none"></div>
+      </div>
+
+      <!-- ANALYSIS VIEW -->
+      <div class="view" id="view-analysis">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-chart-scatter" style="color:var(--purple)"></i> PCA Plot</span>
+              <span class="card-badge badge-blue">PC1: 23.7% | PC2: 12.4%</span>
+            </div>
+            <div class="pca-wrap"><canvas id="pcaCanvas"></canvas></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title"><i class="ti ti-grid-dots" style="color:var(--teal)"></i> Metabolite Heatmap</span>
+            </div>
+            <div><canvas id="heatmapCanvas" style="width:100%;height:160px"></canvas></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title"><i class="ti ti-activity" style="color:var(--amber)"></i> Metabolite Abundance — 21 metabolites</span>
+          </div>
+          <div><canvas id="barCanvas" style="width:100%;height:180px"></canvas></div>
+        </div>
+      </div>
+
+      <!-- MODELING VIEW -->
+      <div class="view" id="view-modeling">
+        <div class="tab-row">
+          <div class="tab active" onclick="setTab(this,'conf')">Confusion Matrix</div>
+          <div class="tab" onclick="setTab(this,'params')">Parameters</div>
+          <div class="tab" onclick="setTab(this,'calib')">Calibration</div>
+        </div>
+        <div id="tab-conf">
+          <div class="grid-2">
+            <div class="card">
+              <div class="card-header"><span class="card-title">Confusion Matrix — Test Set</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:4px">
+                <div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+                  <div style="text-align:center;font-size:10px;color:var(--text3);padding:4px">Pred: preop</div>
+                  <div style="text-align:center;font-size:10px;color:var(--text3);padding:4px">Pred: post-op</div>
+                </div>
+                <div style="display:flex;flex-direction:column;justify-content:space-around">
+                  <div style="font-size:10px;color:var(--text3);text-align:right;padding-right:8px;height:60px;display:flex;align-items:center;justify-content:flex-end">True: preop</div>
+                  <div style="font-size:10px;color:var(--text3);text-align:right;padding-right:8px;height:60px;display:flex;align-items:center;justify-content:flex-end">True: post-op</div>
+                </div>
+                <div class="conf-matrix">
+                  <div class="cm-cell" style="background:rgba(76,175,80,.15)"><div class="cm-val" style="color:var(--green)">89</div><div class="cm-label">True Negative</div></div>
+                  <div class="cm-cell" style="background:rgba(255,82,82,.1)"><div class="cm-val" style="color:var(--red)">7</div><div class="cm-label">False Positive</div></div>
+                  <div class="cm-cell" style="background:rgba(255,82,82,.1)"><div class="cm-val" style="color:var(--red)">5</div><div class="cm-label">False Negative</div></div>
+                  <div class="cm-cell" style="background:rgba(0,201,177,.15)"><div class="cm-val" style="color:var(--teal)">92</div><div class="cm-label">True Positive</div></div>
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header"><span class="card-title">Model Performance</span></div>
+              <div id="perf-metrics"></div>
+            </div>
+          </div>
+        </div>
+        <div id="tab-params" style="display:none">
+          <div class="card">
+            <div class="card-header"><span class="card-title">ExtraTreesClassifier — Best Parameters</span><span class="card-badge badge-teal">Grid Search CV</span></div>
+            <div id="params-list"></div>
+          </div>
+        </div>
+        <div id="tab-calib" style="display:none">
+          <div class="card">
+            <div class="card-header"><span class="card-title">Probability Calibration Curve</span></div>
+            <div class="chart-wrap"><canvas id="calibCanvas"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHAP VIEW -->
+      <div class="view" id="view-shap">
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header"><span class="card-title"><i class="ti ti-chart-bar" style="color:var(--teal)"></i> Feature Importance (SHAP)</span></div>
+            <div id="shap-bars" style="margin-top:8px"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title"><i class="ti ti-info-circle" style="color:var(--blue)"></i> Metabolite ที่สำคัญที่สุด</span></div>
+            <div id="shap-detail"></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><span class="card-title"><i class="ti ti-timeline" style="color:var(--amber)"></i> SHAP Summary — ผลกระทบต่อการทำนาย</span></div>
+          <div><canvas id="shapSummaryCanvas" style="width:100%;height:180px"></canvas></div>
+        </div>
+      </div>
+
+      <!-- CHAT VIEW -->
+      <div class="view" id="view-chat">
+        <div class="chat-container">
+          <div class="chat-messages" id="chat-messages">
+            <div class="msg ai">
+              <div class="ai-header"><div class="avatar" style="width:22px;height:22px;font-size:10px">AI</div><span class="ai-label">MetaboAI Assistant</span></div>
+              <div class="msg-bubble">
+                สวัสดีครับ ผมคือ MetaboAI ผู้ช่วย AI สำหรับระบบจำแนกภาวะเมตาบอลิกจาก NMR Metabolites<br><br>
+                ผมสามารถช่วยคุณได้ในเรื่อง:<br>
+                • <strong>แปลผลการทำนาย</strong> pre-op / post-op และความน่าจะเป็น<br>
+                • <strong>อธิบาย metabolite</strong> ที่มีความสำคัญต่อการวินิจฉัย<br>
+                • <strong>แนะนำแนวทาง</strong> ติดตามผู้ป่วยหลังผ่าตัด Bariatric<br>
+                • <strong>ตอบคำถามทางคลินิก</strong> เกี่ยวกับ NMR Metabolomics
+              </div>
+              <span class="msg-time">ระบบพร้อมใช้งาน</span>
+            </div>
+          </div>
+          <div class="chat-input-wrap">
+            <div class="quick-prompts">
+              <div class="qp" onclick="usePrompt(this)">Dimethyl sulfone หมายความว่าอะไร?</div>
+              <div class="qp" onclick="usePrompt(this)">อธิบาย recovery score 4/6</div>
+              <div class="qp" onclick="usePrompt(this)">แนวทางติดตาม post-op</div>
+              <div class="qp" onclick="usePrompt(this)">ExtraTrees ทำงานอย่างไร?</div>
+              <div class="qp" onclick="usePrompt(this)">ROC-AUC 0.954 ดีแค่ไหน?</div>
+            </div>
+            <div class="chat-input-row" style="margin-top:10px">
+              <textarea class="chat-textarea" id="chat-input" placeholder="พิมพ์คำถามเกี่ยวกับ metabolomics, ผู้ป่วย, หรือโมเดล AI..." rows="1" onkeydown="handleKey(event)"></textarea>
+              <button class="send-btn" onclick="sendMessage()">
+                <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script>
+const PATIENTS = [
+  {id:'S_102',time:6,pred:'post-op',prob:.87,recovery:4,status:'ใกล้เคียงหลังผ่าตัด'},
+  {id:'S_047',time:3,pred:'preop',prob:.21,recovery:2,status:'ก่อนผ่าตัด'},
+  {id:'S_089',time:6,pred:'post-op',prob:.61,recovery:3,status:'กำลังฟื้นตัว'},
+  {id:'S_134',time:9,pred:'post-op',prob:.92,recovery:6,status:'ฟื้นตัวดี'},
+  {id:'S_201',time:12,pred:'post-op',prob:.95,recovery:6,status:'ฟื้นตัวดีมาก'},
+  {id:'S_056',time:3,pred:'preop',prob:.14,recovery:1,status:'ก่อนผ่าตัด'},
+  {id:'S_178',time:6,pred:'post-op',prob:.76,recovery:5,status:'ฟื้นตัวดี'},
+  {id:'S_223',time:9,pred:'post-op',prob:.83,recovery:5,status:'ฟื้นตัวดี'},
+];
+const METABOLITES = [
+  {name:'Dimethyl sulfone',val:1.00,color:'var(--teal)'},
+  {name:'L-valine',val:.82,color:'var(--blue)'},
+  {name:'Isopropanol',val:.71,color:'var(--purple)'},
+  {name:'Leucine',val:.66,color:'var(--amber)'},
+  {name:'Glycine',val:.45,color:'var(--green)'},
+  {name:'L-leucine',val:.38,color:'var(--red)'},
+];
+const ALL_METABOLITES=['Dimethyl sulfone','L-valine','Isopropanol','Leucine','Glycine','L-leucine','Alanine','Glutamine','Creatinine','Formate','Acetate','Pyruvate','Lactate','Tyrosine','Phenylalanine','Histidine','Serine','Threonine','Valine','Methionine','Tryptophan'];
+
+Chart.defaults.color='#94A3B8';
+Chart.defaults.borderColor='rgba(42,58,92,0.8)';
+
+function showView(name,el){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('view-'+name).classList.add('active');
+  if(el)el.classList.add('active');
+  const titles={dashboard:'Dashboard — ภาพรวมระบบ',patients:'รายชื่อผู้ป่วยทั้งหมด',analysis:'วิเคราะห์ข้อมูล Metabolomics',modeling:'Modeling & Evaluation',shap:'SHAP Feature Importance',chat:'LLM AI Assistant'};
+  document.getElementById('view-title').textContent=titles[name]||name;
+  if(name==='patients')renderPatients();
+  if(name==='analysis')setTimeout(renderAnalysis,50);
+  if(name==='modeling')setTimeout(renderModeling,50);
+  if(name==='shap')renderShap();
+}
+
+// Dashboard charts
+function renderDashboard(){
+  // ROC
+  const rCtx=document.getElementById('rocCanvas');
+  if(!rCtx)return;
+  rCtx.width=rCtx.parentElement.offsetWidth;rCtx.height=160;
+  const rocPts=[];for(let i=0;i<=100;i++){const x=i/100;rocPts.push({x,y:Math.min(1,Math.pow(x,.38)+Math.random()*.015)});}
+  new Chart(rCtx,{type:'scatter',data:{datasets:[
+    {label:'ROC Curve',data:rocPts,showLine:true,borderColor:'#00C9B1',backgroundColor:'rgba(0,201,177,0.1)',fill:true,pointRadius:0,borderWidth:2,tension:.4},
+    {label:'Random',data:[{x:0,y:0},{x:1,y:1}],showLine:true,borderColor:'rgba(148,163,184,.3)',pointRadius:0,borderDash:[5,5],borderWidth:1}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{min:0,max:1,title:{display:true,text:'FPR',font:{size:10}}},y:{min:0,max:1,title:{display:true,text:'TPR',font:{size:10}}}}}});
+
+  // Distribution
+  const dCtx=document.getElementById('distCanvas');
+  if(!dCtx)return;
+  new Chart(dCtx,{type:'doughnut',data:{labels:['pre-op','post-op'],datasets:[{data:[232,233],backgroundColor:['rgba(74,158,255,.7)','rgba(0,201,177,.7)'],borderColor:['#4A9EFF','#00C9B1'],borderWidth:1}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:12,font:{size:11}}}}}});
+
+  // Metabolite bars
+  const mb=document.getElementById('metabo-bars');
+  if(mb){mb.innerHTML='';METABOLITES.forEach(m=>{mb.innerHTML+=`<div class="met-row"><span class="met-name">${m.name}</span><div class="met-bar-wrap"><div class="met-bar" style="width:${m.val*100}%;background:${m.color}"></div></div><span class="met-val">${m.val.toFixed(2)}</span></div>`});}
+}
+
+// Patients
+function renderPatients(){
+  const tb=document.getElementById('patient-tbody');
+  if(!tb)return;
+  tb.innerHTML='';
+  PATIENTS.forEach((p,i)=>{
+    const isPost=p.pred==='post-op';
+    const color=isPost?'var(--teal)':'var(--blue)';
+    const pct=Math.round(p.prob*100);
+    tb.innerHTML+=`<tr onclick="selectPatient(${i})" id="pr-${i}"><td style="font-family:var(--mono);color:var(--text1)">${p.id}</td><td>${p.time}m</td><td><span class="pred-chip" style="background:${isPost?'var(--tealg)':'var(--blueg)'};color:${color};border:1px solid ${color}33">${p.pred}</span></td><td style="white-space:nowrap"><span style="color:${color};font-family:var(--mono)">${pct}%</span><span class="prob-bar"><span class="prob-fill" style="width:${pct}%;background:${color}"></span></span></td><td><span style="font-family:var(--mono)">${p.recovery}/6</span></td><td style="font-size:11px;color:var(--text3)">${p.status}</td></tr>`;
+  });
+}
+
+function selectPatient(i){
+  document.querySelectorAll('.pt-table tr').forEach(r=>r.classList.remove('pt-row-selected'));
+  const row=document.getElementById('pr-'+i);
+  if(row)row.classList.add('pt-row-selected');
+  const p=PATIENTS[i];
+  const det=document.getElementById('patient-detail');
+  det.style.display='block';
+  const isPost=p.pred==='post-op';
+  det.innerHTML=`<div class="detail-panel"><div class="dp-header"><div class="dp-avatar">${p.id.split('_')[1]}</div><div><div class="dp-name">${p.id}</div><div class="dp-sub">ตัวอย่าง NMR · ${p.time} เดือน</div></div><span class="card-badge ${isPost?'badge-teal':'badge-blue'}" style="margin-left:auto">${p.pred}</span></div><div class="info-grid"><div class="info-item"><div class="info-label">ความน่าจะเป็น post-op</div><div class="info-val" style="color:var(--teal)">${(p.prob*100).toFixed(0)}%</div></div><div class="info-item"><div class="info-label">Recovery Score</div><div class="info-val">${p.recovery} / 6</div></div><div class="info-item"><div class="info-label">ช่วงเวลา</div><div class="info-val">${p.time} เดือน</div></div><div class="info-item"><div class="info-label">สถานะ</div><div class="info-val" style="font-size:12px">${p.status}</div></div></div><div class="divider"></div><div style="font-size:12px;color:var(--text2)"><i class="ti ti-flag" style="color:var(--amber)"></i> <strong>คำแนะนำ:</strong> ${isPost&&p.recovery>=4?'ผู้ป่วยฟื้นตัวดี ติดตามตามนัด':'แนะนำติดตามทางโภชนาการอย่างใกล้ชิด'}</div></div>`;
+}
+
+// Analysis
+let analysisRendered=false;
+function renderAnalysis(){
+  if(analysisRendered)return;analysisRendered=true;
+  // PCA
+  const pc=document.getElementById('pcaCanvas');
+  if(!pc)return;
+  pc.width=pc.parentElement.offsetWidth;pc.height=180;
+  const preop=[],postop=[];
+  for(let i=0;i<100;i++){preop.push({x:-1.5+Math.random()*2.5,y:-1+Math.random()*2});}
+  for(let i=0;i<100;i++){postop.push({x:.5+Math.random()*2.5,y:.5+Math.random()*1.8});}
+  new Chart(pc,{type:'scatter',data:{datasets:[
+    {label:'pre-op',data:preop,backgroundColor:'rgba(74,158,255,.6)',borderColor:'#4A9EFF',borderWidth:0,pointRadius:3},
+    {label:'post-op',data:postop,backgroundColor:'rgba(0,201,177,.6)',borderColor:'#00C9B1',borderWidth:0,pointRadius:3}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{title:{display:true,text:'PC1 (23.7%)',font:{size:10}}},y:{title:{display:true,text:'PC2 (12.4%)',font:{size:10}}}}}});
+
+  // Bar chart
+  const bc=document.getElementById('barCanvas');
+  if(!bc)return;
+  const vals=ALL_METABOLITES.map(()=>Math.random()*.8+.1);
+  new Chart(bc,{type:'bar',data:{labels:ALL_METABOLITES.map(m=>m.length>10?m.substring(0,10)+'…':m),datasets:[{label:'log1p abundance',data:vals,backgroundColor:vals.map(v=>v>.6?'rgba(0,201,177,.7)':v>.4?'rgba(74,158,255,.7)':'rgba(156,111,255,.7)'),borderWidth:0,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{font:{size:9},maxRotation:45}},y:{title:{display:true,text:'log1p',font:{size:10}}}}}});
+
+  // Heatmap (canvas manual)
+  const hc=document.getElementById('heatmapCanvas');
+  if(!hc)return;
+  hc.width=hc.parentElement.offsetWidth||400;hc.height=160;
+  const ctx=hc.getContext('2d');
+  const rows=5,cols=10,cw=hc.width/cols,ch=120/rows;
+  for(let r=0;r<rows;r++){for(let c=0;c<cols;c++){
+    const v=Math.random();
+    const hot=Math.round(v*200);const cold=Math.round((1-v)*200);
+    ctx.fillStyle=`rgb(${cold>0?20:200},${Math.round(v*100)+50},${hot>0?20:200})`;
+    ctx.fillRect(c*cw,r*ch+20,cw-1,ch-1);
+  }}
+  const metNames=['DMS','L-val','Iso','Leu','Gly','L-leu','Ala','Gln','Cre','For'];
+  ctx.fillStyle='rgba(148,163,184,.8)';ctx.font='9px Sarabun,sans-serif';ctx.textAlign='center';
+  metNames.forEach((m,i)=>ctx.fillText(m,i*cw+cw/2,15));
+}
+
+// Modeling
+let modelingRendered=false;
+function renderModeling(){
+  if(modelingRendered)return;modelingRendered=true;
+  // Perf metrics
+  const pm=document.getElementById('perf-metrics');
+  if(pm){const metrics=[['Precision','.912','teal'],['Recall','.903','blue'],['Specificity','.897','amber'],['NPV','.908','green']];
+  pm.innerHTML=metrics.map(([l,v,c])=>`<div class="met-row"><span class="met-name" style="color:var(--text2)">${l}</span><div class="met-bar-wrap"><div class="met-bar" style="width:${parseFloat(v)*100}%;background:var(--${c})"></div></div><span class="met-val">${v}</span></div>`).join('');}
+  // Params
+  const pl=document.getElementById('params-list');
+  if(pl){const params=[['n_estimators','50','ExtraTrees'],['max_depth','None','No limit'],['min_samples_leaf','1','Leaf nodes'],['criterion','entropy','Split quality'],['random_state','42','Reproducibility'],['class_weight','balanced','Handle imbalance']];
+  pl.innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:12px">${params.map(([k,v,d])=>`<tr><td style="padding:8px;color:var(--text3);font-family:var(--mono)">${k}</td><td style="padding:8px;color:var(--teal);font-family:var(--mono);font-weight:500">${v}</td><td style="padding:8px;color:var(--text2)">${d}</td></tr>`).join('')}</table>`;}
+  // Calibration
+  const cc=document.getElementById('calibCanvas');
+  if(cc){const pts=[];for(let i=0;i<=10;i++){const x=i/10;pts.push({x,y:x+(.5-x)*Math.random()*.3});}
+  new Chart(cc,{type:'scatter',data:{datasets:[
+    {label:'Calibrated',data:pts,showLine:true,borderColor:'#00C9B1',backgroundColor:'rgba(0,201,177,.8)',borderWidth:2,tension:.3,pointRadius:5},
+    {label:'Perfect',data:[{x:0,y:0},{x:1,y:1}],showLine:true,borderColor:'rgba(148,163,184,.4)',pointRadius:0,borderDash:[5,5],borderWidth:1}
+  ]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{min:0,max:1,title:{display:true,text:'Mean predicted probability',font:{size:10}}},y:{min:0,max:1,title:{display:true,text:'Fraction of positives',font:{size:10}}}}}})}
+}
+
+// SHAP
+function renderShap(){
+  const sb=document.getElementById('shap-bars');
+  if(sb&&!sb.innerHTML){
+    sb.innerHTML=METABOLITES.map((m,i)=>`<div class="shap-row"><span class="shap-name">${m.name}</span><div class="shap-bar-wrap"><div class="shap-bar" style="width:${m.val*100}%;left:0;background:${m.color};opacity:.8"></div></div><span class="shap-val">${m.val.toFixed(2)}</span></div>`).join('');
+  }
+  const sd=document.getElementById('shap-detail');
+  if(sd&&!sd.innerHTML){
+    sd.innerHTML=`<div class="alert-item info" style="border-color:var(--teal)"><i class="ti ti-flask" style="color:var(--teal);font-size:16px;flex-shrink:0"></i><div><div class="alert-txt" style="font-weight:500">Dimethyl sulfone (SHAP: 1.00)</div><div class="alert-time">ออกซิเดชันของ sulfur metabolism — เพิ่มขึ้นหลัง bariatric surgery อย่างมีนัยสำคัญ</div></div></div><div class="alert-item info" style="border-color:var(--blue)"><i class="ti ti-flask" style="color:var(--blue);font-size:16px;flex-shrink:0"></i><div><div class="alert-txt" style="font-weight:500">L-valine (SHAP: 0.82)</div><div class="alert-time">Branched-chain amino acid — เปลี่ยนแปลงตาม metabolic state ของผู้ป่วย</div></div></div><div class="alert-item info" style="border-color:var(--purple)"><i class="ti ti-flask" style="color:var(--purple);font-size:16px;flex-shrink:0"></i><div><div class="alert-txt" style="font-weight:500">Isopropanol (SHAP: 0.71)</div><div class="alert-time">ผลิตภัณฑ์ของ acetone metabolism — บ่งชี้การเปลี่ยนแปลงพลังงาน</div></div></div>`;
+  }
+  setTimeout(()=>{
+    const sc=document.getElementById('shapSummaryCanvas');
+    if(sc&&!sc.dataset.rendered){
+      sc.dataset.rendered='1';
+      const data=METABOLITES.map(m=>({x:m.val*(Math.random()>.5?1:-1)*.3+m.val,y:Math.random()*20-10}));
+      new Chart(sc,{type:'scatter',data:{datasets:METABOLITES.map((m,i)=>({label:m.name,data:[data[i]],backgroundColor:m.color.replace('var(','').replace(')',''),pointRadius:8,borderWidth:0}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'right',labels:{boxWidth:10,font:{size:10}}}},scales:{x:{title:{display:true,text:'SHAP value',font:{size:10}}},y:{display:false}}}});
+    }
+  },100);
+}
+
+function setTab(el,name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  ['conf','params','calib'].forEach(t=>document.getElementById('tab-'+t).style.display=t===name?'block':'none');
+}
+
+// Chat
+const SYSTEM_PROMPT=`คุณคือ MetaboAI ผู้ช่วย AI ทางการแพทย์สำหรับระบบจำแนกภาวะเมตาบอลิกจาก NMR Metabolites สำหรับการผ่าตัด Bariatric Surgery
+
+ข้อมูลระบบ:
+- โมเดล: ExtraTreesClassifier (n_estimators=50, criterion=entropy)
+- ประสิทธิภาพ: ROC-AUC=0.954, Accuracy=0.902, F1=0.936
+- Dataset: 465 samples, 21 metabolites, log1p abundance
+- เวลาติดตาม: 3, 6, 9, 12 เดือน
+- Top Metabolites: Dimethyl sulfone (1.00), L-valine (0.82), Isopropanol (0.71), Leucine (0.66), Glycine (0.45), L-leucine (0.38)
+- การทำนาย: pre-op (=0) vs post-op (=1)
+
+ตอบเป็นภาษาไทย กระชับ ชัดเจน เหมาะกับบุคลากรทางการแพทย์ ใช้ศัพท์วิชาการได้ แต่อธิบายให้เข้าใจง่าย`;
+
+async function sendMessage(){
+  const inp=document.getElementById('chat-input');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  addMsg('user',txt);
+  inp.value='';
+  const typing=addTyping();
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM_PROMPT,messages:[{role:'user',content:txt}]})});
+    const data=await res.json();
+    removeTyping(typing);
+    const reply=data.content?.find(c=>c.type==='text')?.text||'ขออภัย ไม่สามารถตอบได้ในขณะนี้';
+    addMsg('ai',reply);
+  }catch(e){removeTyping(typing);addMsg('ai','ขออภัย เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่');}
+}
+
+function addMsg(role,text){
+  const mc=document.getElementById('chat-messages');
+  const d=document.createElement('div');
+  d.className='msg '+role;
+  const now=new Date().toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit'});
+  d.innerHTML=role==='ai'?`<div class="ai-header"><div class="avatar" style="width:22px;height:22px;font-size:10px">AI</div><span class="ai-label">MetaboAI</span></div><div class="msg-bubble">${text.replace(/\n/g,'<br>')}</div><span class="msg-time">${now}</span>`:`<div class="msg-bubble">${text}</div><span class="msg-time">${now}</span>`;
+  mc.appendChild(d);
+  mc.scrollTop=mc.scrollHeight;
+  return d;
+}
+
+function addTyping(){
+  const mc=document.getElementById('chat-messages');
+  const d=document.createElement('div');
+  d.className='msg ai';d.id='typing';
+  d.innerHTML='<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+  mc.appendChild(d);mc.scrollTop=mc.scrollHeight;
+  return d;
+}
+function removeTyping(el){if(el&&el.parentNode)el.parentNode.removeChild(el);}
+
+function usePrompt(el){
+  const inp=document.getElementById('chat-input');
+  inp.value=el.textContent;
+  showView('chat',document.querySelector('[onclick*="chat"]'));
+  setTimeout(sendMessage,100);
+}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}}
+function filterTime(v){/* filter logic */}
+
+// Init
+setTimeout(renderDashboard,100);
+renderPatients();
+</script>

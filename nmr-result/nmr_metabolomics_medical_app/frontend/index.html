@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="th">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ปฏิภาณเวชกรรม | NMR Metabolomics Medical App</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="team-logo" src="./assets/team-logo.svg" alt="โลโก้ทีม ปฏิภาณเวชกรรม" />
+          <div>
+            <h1>ปฏิภาณเวชกรรม</h1>
+            <p>NEXUS-M clinical prototype</p>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-item active" data-view="dashboard">ภาพรวม</button>
+          <button class="nav-item" data-view="samples">รายการตัวอย่าง</button>
+          <button class="nav-item" data-view="input">นำเข้าข้อมูล</button>
+          <button class="nav-item" data-view="modeling">ประสิทธิภาพโมเดล</button>
+          <button class="nav-item" data-view="rules">คะแนนฟื้นตัว</button>
+          <button class="nav-item" data-view="assistant">ผู้ช่วยถามตอบ</button>
+          <button class="nav-item" data-view="privacy">ความปลอดภัย</button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <p>ระบบช่วยติดตามการฟื้นตัว</p>
+          <strong>ใช้ประกอบการตัดสินใจ ไม่ใช่วินิจฉัยโรค</strong>
+        </div>
+      </aside>
+
+      <main class="main">
+        <section class="app-header">
+          <div class="header-brand">
+            <img class="header-logo" src="./assets/team-logo.svg" alt="โลโก้ทีม ปฏิภาณเวชกรรม" />
+            <div>
+              <p class="eyebrow">BDI Young Innovator Hackathon 2026</p>
+              <h2>ปฏิภาณเวชกรรม</h2>
+              <span>Metabolite-guided nutrition planning after bariatric surgery</span>
+            </div>
+          </div>
+          <div class="header-meta">
+            <div>
+              <strong>Dataset</strong>
+              <span>MTBLS242 NMR metabolomics</span>
+            </div>
+            <div>
+              <strong>Model</strong>
+              <span>ExtraTrees + rule score</span>
+            </div>
+          </div>
+        </section>
+
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Metabolite-Guided Nutrition Planning</p>
+            <h2 id="pageTitle">ภาพรวม</h2>
+          </div>
+          <div class="status-pill">
+            <span></span>
+            เชื่อมต่อข้อมูลจริงแล้ว
+          </div>
+        </header>
+
+        <section class="content">
+          <section id="view-dashboard" class="view active">
+            <div class="hero-panel">
+              <div class="hero-copy">
+                <p class="eyebrow">Hospital recovery dashboard</p>
+                <h3>สรุปการฟื้นตัวทางเมตาบอลิซึมหลังผ่าตัดให้ทีมรักษาอ่านได้ในหน้าเดียว</h3>
+                <p>
+                  ระบบดึงข้อมูลจริงจาก backend แล้วแสดงผลเป็นภาษาทางคลินิก: ภาวะที่โมเดลทำนาย,
+                  ความน่าจะเป็นหลังผ่าตัด, คะแนนฟื้นตัว, biomarker ที่เป็นเหตุผล และธงติดตามโภชนาการ.
+                </p>
+                <div class="clinical-summary">
+                  <div>
+                    <strong>อ่านเร็วในคลินิก</strong>
+                    <span>เห็นสถานะ, คะแนน, และคำแนะนำติดตามได้ทันที</span>
+                  </div>
+                  <div>
+                    <strong>ช่วยนักโภชนาการ</strong>
+                    <span>บอกสารที่เปลี่ยนและเหตุผลของ nutrition follow-up flag</span>
+                  </div>
+                </div>
+              </div>
+              <div class="hero-visual">
+                <img src="./assets/clinical-metabolomics.png" alt="Medical metabolomics recovery dashboard illustration" />
+                <div class="hero-score">
+                  <span>Test ROC-AUC</span>
+                  <strong id="heroAuc">--</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="workflow-grid">
+              <article>
+                <span>1</span>
+                <strong>เลือกตัวอย่าง</strong>
+                <p>ค้นหา sample หรือ subject_id โดยใช้รหัสที่ไม่ระบุตัวบุคคล</p>
+              </article>
+              <article>
+                <span>2</span>
+                <strong>อ่านผลโมเดล</strong>
+                <p>ดู predicted state และ post-op probability จาก NMR metabolites</p>
+              </article>
+              <article>
+                <span>3</span>
+                <strong>ดูเหตุผล</strong>
+                <p>ตรวจ biomarker ที่ทำให้ sample ดู preop-like หรือ post-op-like</p>
+              </article>
+              <article>
+                <span>4</span>
+                <strong>วางแผนติดตาม</strong>
+                <p>ใช้ recovery score และ nutrition flag เพื่อจัดลำดับการติดตาม</p>
+              </article>
+            </div>
+
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span>จำนวนตัวอย่าง</span>
+                <strong id="nSamples">--</strong>
+                <small>ข้อมูล NMR จริง</small>
+              </article>
+              <article class="metric-card">
+                <span>จำนวนผู้ป่วย</span>
+                <strong id="nSubjects">--</strong>
+                <small>แยกตาม subject_id</small>
+              </article>
+              <article class="metric-card">
+                <span>จำนวนสาร</span>
+                <strong id="nMetabolites">--</strong>
+                <small>metabolite abundance</small>
+              </article>
+              <article class="metric-card">
+                <span>สารหลักที่ใช้</span>
+                <strong id="nSelected">--</strong>
+                <small>explainable biomarkers</small>
+              </article>
+            </div>
+
+            <div class="two-col">
+              <article class="card">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Follow-up coverage</p>
+                    <h3>จำนวนตัวอย่างตามช่วงติดตาม</h3>
+                  </div>
+                </div>
+                <div id="timepointBars" class="bar-list"></div>
+              </article>
+              <article class="card">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Top-6 biomarkers</p>
+                    <h3>สารที่โมเดลใช้ตัดสินใจมากที่สุด</h3>
+                  </div>
+                </div>
+                <div id="featureBars" class="bar-list"></div>
+              </article>
+            </div>
+
+            <article class="card">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">Longitudinal signal</p>
+                  <h3>แนวโน้ม median log1p abundance ของสารหลัก</h3>
+                </div>
+              </div>
+              <div id="trajectoryChart" class="trajectory"></div>
+            </article>
+          </section>
+
+          <section id="view-samples" class="view">
+            <div class="split-layout">
+              <article class="card sample-browser">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">De-identified samples</p>
+                    <h3>เลือกตัวอย่างเพื่อตรวจผล</h3>
+                  </div>
+                </div>
+                <div class="filter-row">
+                  <input id="sampleSearch" class="input" placeholder="ค้นหา sample หรือ subject_id" />
+                  <select id="stateFilter" class="input">
+                    <option value="">All states</option>
+                    <option value="preop-like">preop-like</option>
+                    <option value="transition">transition</option>
+                    <option value="post-op-like">post-op-like</option>
+                  </select>
+                </div>
+                <div id="sampleList" class="sample-list"></div>
+              </article>
+
+              <article class="card sample-detail">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Clinical summary</p>
+                    <h3 id="selectedSampleName">ยังไม่ได้เลือก sample</h3>
+                    <small id="selectedMeta">เลือก sample เพื่อดูผลจริงจากโมเดล</small>
+                  </div>
+                  <span id="stateBadge" class="badge neutral">waiting</span>
+                </div>
+
+                <div class="result-grid">
+                  <div class="result-box">
+                    <span>ภาวะที่โมเดลทำนาย</span>
+                    <strong id="predictedLabel">--</strong>
+                    <small>preop / post-op</small>
+                  </div>
+                  <div class="result-box">
+                    <span>ความน่าจะเป็น post-op</span>
+                    <strong id="postopProb">--</strong>
+                    <div class="progress"><div id="postopProbBar"></div></div>
+                  </div>
+                  <div class="result-box">
+                    <span>คะแนนฟื้นตัว</span>
+                    <strong id="recoveryScore">-- / 6</strong>
+                    <small id="recoveryState">preop-like / transition / post-op-like</small>
+                  </div>
+                  <div class="result-box">
+                    <span>ธงติดตามโภชนาการ</span>
+                    <strong id="followupFlag">--</strong>
+                    <small id="ruleReasons">top metabolite reasons</small>
+                  </div>
+                </div>
+
+                <div class="doctor-summary">
+                  <div>
+                    <p class="eyebrow">สำหรับทีมรักษา</p>
+                    <h4>สรุปที่นำไปใช้ต่อ</h4>
+                    <p id="clinicalSummaryText">เลือก sample เพื่อสร้างสรุปอัตโนมัติ</p>
+                  </div>
+                  <div class="summary-actions">
+                    <button id="copySummaryBtn" class="btn secondary">คัดลอกสรุป</button>
+                    <button id="printSummaryBtn" class="btn primary">พิมพ์/บันทึก PDF</button>
+                  </div>
+                </div>
+
+                <h4>สารที่เป็นเหตุผลของผลลัพธ์</h4>
+                <div id="biomarkerTable" class="biomarker-table"></div>
+              </article>
+            </div>
+          </section>
+
+          <section id="view-input" class="view">
+            <div class="two-col">
+              <article class="card">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">Manual input</p>
+                    <h3>กรอก top-6 metabolite log1p abundance</h3>
+                  </div>
+                </div>
+                <p class="hint">
+                  ใช้ค่า log1p abundance เหมือนข้อมูล clean จาก EDA. สามารถกดใช้ค่าจาก sample ที่เลือกอยู่ได้.
+                </p>
+                <div id="manualInputs" class="manual-inputs"></div>
+                <div class="actions">
+                  <button id="useSelectedBtn" class="btn secondary">Use selected sample</button>
+                  <button id="manualPredictBtn" class="btn primary">Predict</button>
+                </div>
+                <div id="manualPrediction" class="prediction-panel"></div>
+              </article>
+
+              <article class="card">
+                <div class="section-head">
+                  <div>
+                    <p class="eyebrow">CSV / TSV upload</p>
+                    <h3>Upload metabolite profile</h3>
+                  </div>
+                </div>
+                <p class="hint">
+                  ไฟล์ต้องมี column top-6: Dimethyl sulfone, L-valine, isopropanol,
+                  lipoproteins, glycine, L-leucine. ระบบจะ predict สูงสุด 20 rows แรก.
+                </p>
+                <input id="fileInput" class="input file-input" type="file" accept=".csv,.tsv,.txt" />
+                <div id="uploadResult" class="upload-result"></div>
+              </article>
+            </div>
+          </section>
+
+          <section id="view-modeling" class="view">
+            <div class="metric-grid">
+              <article class="metric-card"><span>ROC-AUC</span><strong id="mAuc">--</strong><small>held-out test</small></article>
+              <article class="metric-card"><span>Accuracy</span><strong id="mAcc">--</strong><small>held-out test</small></article>
+              <article class="metric-card"><span>F1-score</span><strong id="mF1">--</strong><small>held-out test</small></article>
+              <article class="metric-card"><span>AUC gap</span><strong id="mGap">--</strong><small>train-test gap</small></article>
+            </div>
+
+            <div class="two-col">
+              <article class="card">
+                <p class="eyebrow">Leakage control</p>
+                <h3>Train/test split by subject_id</h3>
+                <div id="splitSummary" class="split-summary"></div>
+              </article>
+              <article class="card">
+                <p class="eyebrow">Confusion matrix</p>
+                <h3>Actual vs prediction</h3>
+                <div id="confusionMatrix" class="confusion"></div>
+              </article>
+            </div>
+
+            <article class="card">
+              <p class="eyebrow">Model architecture</p>
+              <h3>Data pipeline used by the app</h3>
+              <div class="pipeline">
+                <span>Clean EDA data</span>
+                <span>Create label</span>
+                <span>Group split</span>
+                <span>Train scaling</span>
+                <span>Top-6 features</span>
+                <span>ExtraTrees</span>
+                <span>Rule score</span>
+                <span>Dashboard output</span>
+              </div>
+            </article>
+          </section>
+
+          <section id="view-rules" class="view">
+            <article class="card">
+              <p class="eyebrow">Rule-based recovery score</p>
+              <h3>แปลง metabolite pattern ให้เป็นคะแนนที่อ่านง่าย</h3>
+              <p class="hint">
+                Rule นี้ใช้ train median threshold จาก modeling pipeline และใช้เป็น explainability layer
+                ไม่ใช่โมเดลวินิจฉัยโรค.
+              </p>
+              <div id="ruleCards" class="rule-grid"></div>
+              <div class="score-legend">
+                <div><strong>0-2</strong><span>preop-like</span></div>
+                <div><strong>3</strong><span>transition</span></div>
+                <div><strong>4-6</strong><span>post-op-like</span></div>
+              </div>
+            </article>
+          </section>
+
+          <section id="view-assistant" class="view">
+            <article class="card assistant-card">
+              <div class="section-head">
+                <div>
+                  <p class="eyebrow">LLM assistant through backend</p>
+                  <h3>ถามคำถามจากข้อมูล sample และผลโมเดล</h3>
+                </div>
+                <span class="badge secure">POST /api/assistant</span>
+              </div>
+              <div id="chatMessages" class="chat-messages"></div>
+              <form id="assistantForm" class="assistant-form">
+                <input id="assistantQuestion" class="input" placeholder="เช่น sample นี้ควรติดตามโภชนาการไหม" />
+                <button class="btn primary" type="submit">Ask</button>
+              </form>
+            </article>
+          </section>
+
+          <section id="view-privacy" class="view">
+            <div class="privacy-grid">
+              <article class="privacy-card">
+                <h3>De-identification</h3>
+                <p>ใช้ sample/patient ID ที่ไม่ระบุตัวบุคคล และไม่แสดงชื่อจริง, HN, วันเกิด หรือข้อมูลติดต่อ.</p>
+              </article>
+              <article class="privacy-card">
+                <h3>Secure storage & logs</h3>
+                <p>เก็บ model artifact, prediction logs และ audit logs แยกชั้นข้อมูล เพื่อให้ตรวจสอบย้อนหลังได้.</p>
+              </article>
+              <article class="privacy-card">
+                <h3>Access control</h3>
+                <p>จำกัดสิทธิ์เฉพาะทีมแพทย์และนักโภชนาการที่เกี่ยวข้องกับการติดตามผู้ป่วย.</p>
+              </article>
+              <article class="privacy-card">
+                <h3>Deployment options</h3>
+                <p>รองรับทั้ง on-premise hospital server และ BDI cloud ตามข้อกำหนดด้านความปลอดภัย.</p>
+              </article>
+            </div>
+          </section>
+        </section>
+
+        <footer class="app-footer">
+          <div>
+            <strong>ปฏิภาณเวชกรรม</strong>
+            <span>Clinical decision-support prototype for metabolic recovery monitoring</span>
+          </div>
+          <div class="footer-links">
+            <span>De-identified sample ID</span>
+            <span>On-premise / BDI cloud ready</span>
+            <span>Not for diagnosis</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
