@@ -4,3 +4,4 @@ __pycache__/
 *.py[cod]
 .venv*/
 .matplotlib_cache/
+nmr_metabolomics_medical_app/database/
