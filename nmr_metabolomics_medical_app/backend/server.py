@@ -1,6 +1,7 @@
 import argparse
 import json
 import mimetypes
+import os
 import posixpath
 import traceback
 from http import HTTPStatus
@@ -145,8 +146,8 @@ class MedicalAppHandler(BaseHTTPRequestHandler):
 
 def main() -> None:
     parser = argparse.ArgumentParser(description="Run the connected NMR medical dashboard.")
-    parser.add_argument("--host", default="127.0.0.1")
-    parser.add_argument("--port", default=8766, type=int)
+    parser.add_argument("--host", default=os.getenv("HOST", "127.0.0.1"))
+    parser.add_argument("--port", default=int(os.getenv("PORT", "8766")), type=int)
     parser.add_argument("--no-rebuild-db", action="store_true")
     args = parser.parse_args()
 

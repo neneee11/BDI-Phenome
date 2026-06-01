@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: nmr-metabolomics-backend
+    env: python
+    buildCommand: pip install -r nmr_metabolomics_medical_app/backend/requirements.txt
+    startCommand: python nmr_metabolomics_medical_app/backend/server.py --host 0.0.0.0
+    healthCheckPath: /api/health
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.11
