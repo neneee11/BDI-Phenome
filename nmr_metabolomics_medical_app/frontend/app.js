@@ -11,12 +11,11 @@ const $ = (selector) => document.querySelector(selector);
 const TOP6 = ["Dimethyl sulfone", "L-valine", "isopropanol", "lipoproteins", "glycine", "L-leucine"];
 const API_BASES = (() => {
   const params = new URLSearchParams(window.location.search);
-  const explicitApi = params.get("api");
+  const explicitApi = params.get("api") || window.NMR_API_BASE;
   if (explicitApi) return [explicitApi.replace(/\/$/, "")];
 
-  const bases = [];
+  const bases = [""];
   const isBackendHost = ["8766", "8770"].includes(window.location.port);
-  if (isBackendHost || window.location.protocol === "file:") bases.push("");
   if (!isBackendHost) {
     bases.push("http://127.0.0.1:8766");
     bases.push("http://127.0.0.1:8770");
