@@ -1,0 +1,15 @@
+<svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Pathiphan Vetchakam team logo</title>
+  <desc id="desc">A clinical metabolomics mark built from a shield, hexagon, and molecular nodes.</desc>
+  <rect x="6" y="6" width="84" height="84" rx="24" fill="#E9F8EF"/>
+  <path d="M48 16L74 31V59L48 80L22 59V31L48 16Z" fill="white" stroke="#18A978" stroke-width="4"/>
+  <path d="M48 27L64 36.5V55L48 68.5L32 55V36.5L48 27Z" fill="#D7F3E3"/>
+  <circle cx="48" cy="48" r="8" fill="#18A978"/>
+  <circle cx="31" cy="37" r="5" fill="#2B7FD7"/>
+  <circle cx="65" cy="37" r="5" fill="#2B7FD7"/>
+  <circle cx="32" cy="60" r="5" fill="#2FB66D"/>
+  <circle cx="64" cy="60" r="5" fill="#2FB66D"/>
+  <path d="M36 40.5L42 45M54 45L60 40.5M40 57L45 52M51 52L57 57" stroke="#16372B" stroke-width="3" stroke-linecap="round"/>
+  <path d="M42 48H54" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <path d="M48 42V54" stroke="white" stroke-width="3" stroke-linecap="round"/>
+</svg>
