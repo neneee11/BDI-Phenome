@@ -1,0 +1,10 @@
+metabolite,importance,postop_pattern,direction_label,metabolic_axis_label
+L-valine,0.0631818181818182,decrease,Lower after surgery,BCAA / insulin resistance
+Dimethyl sulfone,0.057987012987013,increase,Higher after surgery,post-op change signal
+isopropanol,0.0311688311688312,decrease,Lower after surgery,"ketone/alcohol metabolism
+metabolic stress"
+lipoproteins,0.0244805194805194,decrease,Lower after surgery,"lipid metabolism
+cardiometabolic risk"
+glycine,0.0122727272727272,increase,Higher after surgery,"metabolic health
+insulin sensitivity"
+L-leucine,0.0065584415584416,decrease,Lower after surgery,BCAA / insulin resistance

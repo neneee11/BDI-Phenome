@@ -1,0 +1,22 @@
+metabolite,category,category_th,preop_median_z,mean_postop_median_z,postop_minus_preop_z,postop_high_z,postop_high_and_increased
+Dimethyl sulfone,External / gut microbiome,ภายนอก / อาหาร / gut microbiome,-0.9006943550067925,0.29418300912784223,1.1948773641346349,True,True
+glycine,Synthesized in body,สร้างเองได้ในร่างกาย,-0.5969370591978949,0.24719912912555242,0.8441361883234473,True,True
+citrate,Synthesized in body,สร้างเองได้ในร่างกาย,0.13479824625503328,0.22810808445307462,0.09330983819804134,True,True
+L-glutamine,Synthesized in body,สร้างเองได้ในร่างกาย,-0.11394979981990531,0.16741397199407737,0.2813637718139827,True,True
+hypoxanthine,Synthesized in body,สร้างเองได้ในร่างกาย,-0.12547246881995408,0.14988404111325518,0.27535650993320926,True,True
+L-Lactic acid,Synthesized in body,สร้างเองได้ในร่างกาย,0.02597896234151713,0.1029180808313004,0.07693911848978327,True,True
+(R)-3-Hydroxybutyric acid,Synthesized in body,สร้างเองได้ในร่างกาย,-0.5833216106217423,0.0586575502781429,0.6419791608998852,True,True
+creatinine,Synthesized in body,สร้างเองได้ในร่างกาย,0.13219720064583795,0.0441931422456934,-0.08800405840014455,True,False
+acetate,Synthesized in body,สร้างเองได้ในร่างกาย,-0.37661913521059537,0.027346660380598714,0.40396579559119405,True,True
+histidine,Must consume / essential,ต้องรับประทานเข้าไป / essential,-0.029246346983717652,0.016742527587131364,0.04598887457084902,True,True
+acetoacetate,Synthesized in body,สร้างเองได้ในร่างกาย,-0.2132717073473295,-0.013439994323371257,0.19983171302395825,False,False
+L-leucine,Must consume / essential,ต้องรับประทานเข้าไป / essential,0.6484002834250847,-0.053116241384199334,-0.7015165248092841,False,False
+L-alanine,Synthesized in body,สร้างเองได้ในร่างกาย,0.22241073513725243,-0.05922243847245573,-0.2816331736097082,False,False
+D-phenylalanine,Must consume / essential,ต้องรับประทานเข้าไป / essential,0.6496654263387786,-0.12366903794807048,-0.773334464286849,False,False
+Pyruvic acid,Synthesized in body,สร้างเองได้ในร่างกาย,0.5788518574907553,-0.12670746938978675,-0.705559326880542,False,False
+L-allo-Isoleucine,Must consume / essential,ต้องรับประทานเข้าไป / essential,0.6129732982417035,-0.1703915314886475,-0.783364829730351,False,False
+L-tyrosine,Synthesized in body,สร้างเองได้ในร่างกาย,0.8879670662638136,-0.2225670959428473,-1.110534162206661,False,False
+lipoproteins,Synthesized in body,สร้างเองได้ในร่างกาย,0.7342640816468428,-0.26743155542279895,-1.0016956370696417,False,False
+L-valine,Must consume / essential,ต้องรับประทานเข้าไป / essential,1.015368249907146,-0.2888299771474246,-1.3041982270545704,False,False
+isopropanol,External / gut microbiome,ภายนอก / อาหาร / gut microbiome,0.7296119155489087,-0.40387309963288603,-1.1334850151817948,False,False
+methanol,External / gut microbiome,ภายนอก / อาหาร / gut microbiome,0.7315717559587195,-0.40550118532753865,-1.1370729412862581,False,False
