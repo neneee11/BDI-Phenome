@@ -22,6 +22,25 @@ Open:
 http://127.0.0.1:8766
 ```
 
+## Deploy Backend on Render
+
+Create a Render Web Service from this repository. Use the repository root so the backend
+can read `eda_outputs/` and `modeling_outputs/`.
+
+```text
+Environment: Python
+Build Command: pip install -r nmr_metabolomics_medical_app/backend/requirements.txt
+Start Command: python nmr_metabolomics_medical_app/backend/server.py --host 0.0.0.0
+Health Check Path: /api/health
+```
+
+The included `render.yaml` contains the same configuration for Render Blueprint deploys.
+After Render gives you a public URL, update the Vercel frontend config:
+
+```js
+window.NMR_API_BASE = "https://your-render-service.onrender.com";
+```
+
 If you open `frontend/index.html` with VS Code Live Server, keep the backend running on
 `127.0.0.1:8766` so the dashboard can call the real API. The SQLite database is generated
 automatically at runtime from the cleaned EDA and modeling outputs.
